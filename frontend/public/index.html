@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SISOV - Sistema de Rastreabilidade de Ovinos</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>SISOV</h1>
+            <nav>
+                <ul>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#about">Sobre</a></li>
+                    <li><a href="#login">Login</a></li>
+                    <li><a href="./pages/registro.html">Registro</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home">
+        <div class="container">
+            <h2>Bem-vindo ao SISOV</h2>
+            <p>O Sistema de Rastreabilidade de Ovinos no Ceará, garantindo qualidade e procedência da carne.</p>
+            <button onclick="showLogin()">Acesse o Sistema</button>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2>Sobre o SISOV</h2>
+            <p>O SISOV é um sistema que permite rastrear a carne de ovinos, garantindo conformidade com as regras de Identidade Geográfica (IG).</p>
+        </div>
+    </section>
+
+    <section id="login" class="hidden">
+        <div class="container">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <label for="username">Nome de Usuário:</label>
+                <input type="text" id="username" required placeholder="Digite seu nome de usuário">
+        
+                <label for="password">Senha:</label>
+                <input type="password" id="password" required placeholder="Digite sua senha">
+        
+                <button type="submit">Entrar</button>
+            </form>           
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Contato</h2>
+            <p>Entre em contato conosco para mais informações sobre o SISOV.</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 SISOV. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="./js/script.js"></script>
+</body>
+
+</html>
