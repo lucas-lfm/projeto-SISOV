@@ -9,9 +9,16 @@ const router = express.Router();
 // Função para ler dados do db.json
 const readData = () => {
   const dataPath = path.join(__dirname, '../config/db.json');
-  const jsonData = fs.readFileSync(dataPath);
-  return JSON.parse(jsonData).users; // Acesso direto à lista de usuários
+  try {
+    const jsonData = fs.readFileSync(dataPath, 'utf8');
+    const parsedData = JSON.parse(jsonData);
+    return parsedData.users || []; // Retorna um array vazio se 'users' não existir
+  } catch (error) {
+    console.error('Erro ao ler o arquivo db.json:', error);
+    return []; // Retorna um array vazio em caso de erro
+  }
 };
+
 
 // Função para escrever dados no db.json
 const writeData = (data) => {
