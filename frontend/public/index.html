@@ -15,7 +15,7 @@
                 <ul>
                     <li><a href="#home">Início</a></li>
                     <li><a href="#about">Sobre</a></li>
-                    <li><a href="#login">Login</a></li>
+                    <li><a href="javascript:void(0)" onclick="showLogin()">Login</a></li>
                     <li><a href="./pages/registro.html">Registro</a></li>
                     <li><a href="#contact">Contato</a></li>
                 </ul>
@@ -42,11 +42,11 @@
         <div class="container">
             <h2>Login</h2>
             <form id="loginForm">
-                <label for="username">Nome de Usuário:</label>
-                <input type="text" id="username" required placeholder="Digite seu nome de usuário">
+                <label for="Formlogin_username">Nome de Usuário:</label>
+                <input type="text" id="Formlogin_username" required placeholder="Digite seu nome de usuário">
         
-                <label for="password">Senha:</label>
-                <input type="password" id="password" required placeholder="Digite sua senha">
+                <label for="Formlogin_password">Senha:</label>
+                <input type="password" id="Formlogin_password" required placeholder="Digite sua senha">
         
                 <button type="submit">Entrar</button>
             </form>           
@@ -66,6 +66,15 @@
         </div>
     </footer>
 
+    <script>
+        function showLogin() {
+            const homeSection = document.getElementById('home');
+            homeSection.classList.add('hidden');
+
+            const loginSection = document.getElementById('login');
+            loginSection.classList.remove('hidden')
+        }
+    </script>
     <script src="./js/script.js"></script>
 </body>
 

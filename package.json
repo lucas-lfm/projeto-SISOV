@@ -4,9 +4,10 @@
   },
   "scripts": {
     "start": "node backend/server.js",
-    "json-server": "json-server --watch backend//config/db.json --port 3001"
+    "json-server": "json-server --watch backend//data/db.json --port 3001"
   },
   "dependencies": {
-    "express-validator": "^7.2.0"
+    "express-validator": "^7.2.0",
+    "jsonwebtoken": "^9.0.2"
   }
 }
