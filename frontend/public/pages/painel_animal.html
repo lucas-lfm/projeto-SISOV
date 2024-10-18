@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel do Animal - SISOV</title>
+    <link rel="stylesheet" href="../css/painel_animal.css">
+    <link rel="stylesheet" href="../css/global.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <h2>Menu</h2>
+            <ul>
+                <li><a href="#informacoes-produtor">Informações do Produtor</a></li>
+                <li><a href="#identificacao-propriedade">Identificação da Propriedade</a></li>
+                <li><a href="#dados-rebanho">Dados do Rebanho</a></li>
+                <li><a href="#historico-saude">Histórico de Saúde e Manejo</a></li>
+                <li><a href="#alimentacao">Alimentação e Suplementação</a></li>
+                <li><a href="#movimentacao">Movimentação dos Animais</a></li>
+                <li><a href="#reproducao">Reprodução</a></li>
+                <li><a href="#rastreabilidade">Rastreamento e Certificação</a></li>
+                <li><a href="#producao-carne">Produção de Carne</a></li>
+                <li><a href="#documentacao-legal">Documentação Legal e Compliance</a></li>
+                <li><a href="#seguranca">Segurança e Controle de Acesso</a></li>
+                <li><a href="#informacoes-adicionais">Informações Adicionais</a></li>
+            </ul>
+        </div>
+
+        <!-- Cabeçalho -->
+        <div class="header">
+            <h1>Painel do Animal - SISOV</h1>
+        </div>
+
+        <!-- Conteúdo Principal -->
+        <div class="main-content">
+            <div class="card">
+                <h2>Editar Informações do Animal</h2>
+                <form>
+                    <!-- 1. Informações do Produtor -->
+                    <h3 id="informacoes-produtor">Informações do Produtor</h3>
+                    <label for="nome-produtor">Nome do Produtor</label>
+                    <input type="text" id="nome-produtor" name="nome-produtor" required>
+
+                    <label for="endereco">Endereço da Propriedade</label>
+                    <input type="text" id="endereco" name="endereco">
+
+                    <label for="registro-produtor">Registro do Produtor</label>
+                    <input type="text" id="registro-produtor" name="registro-produtor">
+
+                    <label for="contato-produtor">Contato</label>
+                    <input type="tel" id="contato-produtor" name="contato-produtor" placeholder="(xx) xxxxx-xxxx">
+
+                    <!-- 2. Identificação da Propriedade -->
+                    <h3 id="identificacao-propriedade">Identificação da Propriedade</h3>
+                    <label for="nome-propriedade">Nome e Localização</label>
+                    <input type="text" id="nome-propriedade" name="nome-propriedade">
+
+                    <label for="registro-propriedade">Número de Registro</label>
+                    <input type="text" id="registro-propriedade" name="registro-propriedade">
+
+                    <label for="tipo-uso">Tipo de Uso</label>
+                    <select id="tipo-uso" name="tipo-uso">
+                        <option value="corte">Corte</option>
+                        <option value="leite">Leite</option>
+                        <option value="dupla-producao">Dupla Produção</option>
+                    </select>
+
+                    <!-- 3. Dados do Rebanho -->
+                    <h3 id="dados-rebanho">Dados do Rebanho</h3>
+                    <label for="identificacao-animal">Identificação Individual</label>
+                    <input type="text" id="identificacao-animal" name="identificacao-animal">
+
+                    <label for="sexo-animal">Sexo</label>
+                    <select id="sexo-animal" name="sexo-animal">
+                        <option value="macho">Macho</option>
+                        <option value="femea">Fêmea</option>
+                    </select>
+
+                    <label for="raca-animal">Raça</label>
+                    <input type="text" id="raca-animal" name="raca-animal">
+
+                    <label for="data-nascimento">Data de Nascimento</label>
+                    <input type="date" id="data-nascimento" name="data-nascimento">
+
+                    <label for="codigo-rastreamento">Código de Rastreamento</label>
+                    <input type="text" id="codigo-rastreamento" name="codigo-rastreamento">
+
+                    <label for="procedencia">Procedência</label>
+                    <input type="text" id="procedencia" name="procedencia">
+
+                    <!-- 4. Histórico de Saúde e Manejo -->
+                    <h3 id="historico-saude">Histórico de Saúde e Manejo</h3>
+                    <label for="vacinacoes">Vacinações</label>
+                    <textarea id="vacinacoes" name="vacinacoes"></textarea>
+
+                    <label for="tratamentos-veterinarios">Tratamentos Veterinários</label>
+                    <textarea id="tratamentos-veterinarios" name="tratamentos-veterinarios"></textarea>
+
+                    <label for="historico-doencas">Histórico de Doenças</label>
+                    <textarea id="historico-doencas" name="historico-doencas"></textarea>
+
+                    <label for="exames-laboratoriais">Exames Laboratoriais</label>
+                    <textarea id="exames-laboratoriais" name="exames-laboratoriais"></textarea>
+
+                    <!-- 5. Alimentação e Suplementação -->
+                    <h3 id="alimentacao">Alimentação e Suplementação</h3>
+                    <label for="tipo-alimentacao">Tipo de Alimentação</label>
+                    <select id="tipo-alimentacao" name="tipo-alimentacao">
+                        <option value="pastagem">Pastagem</option>
+                        <option value="ração">Ração</option>
+                        <option value="suplemento">Suplemento</option>
+                    </select>
+
+                    <label for="fornecedor-alimentacao">Fornecedor</label>
+                    <input type="text" id="fornecedor-alimentacao" name="fornecedor-alimentacao">
+
+                    <label for="registro-suplementos">Registro de Suplementos</label>
+                    <textarea id="registro-suplementos" name="registro-suplementos"></textarea>
+
+                    <!-- 6. Movimentação dos Animais -->
+                    <h3 id="movimentacao">Movimentação dos Animais</h3>
+                    <label for="entradas-saidas">Entradas e Saídas</label>
+                    <textarea id="entradas-saidas" name="entradas-saidas"></textarea>
+
+                    <label for="data-movimentacao">Data de Movimentação</label>
+                    <input type="date" id="data-movimentacao" name="data-movimentacao">
+
+                    <label for="origem-destino">Origem e Destino</label>
+                    <input type="text" id="origem-destino" name="origem-destino">
+
+                    <label for="transporte">Transporte</label>
+                    <textarea id="transporte" name="transporte"></textarea>
+
+                    <!-- 7. Reprodução -->
+                    <h3 id="reproducao">Reprodução</h3>
+                    <label for="inseminacao">Inseminação / Acasalamento</label>
+                    <textarea id="inseminacao" name="inseminacao"></textarea>
+
+                    <label for="dados-gestacao">Dados da Gestação</label>
+                    <textarea id="dados-gestacao" name="dados-gestacao"></textarea>
+
+                    <label for="registro-partos">Registro de Partos</label>
+                    <textarea id="registro-partos" name="registro-partos"></textarea>
+
+                    <!-- 8. Rastreamento e Certificação -->
+                    <h3 id="rastreabilidade">Rastreamento e Certificação</h3>
+                    <label for="codigo-sisov">Código SISOV</label>
+                    <input type="text" id="codigo-sisov" name="codigo-sisov">
+
+                    <label for="certificacao-ig">Certificação de IG</label>
+                    <textarea id="certificacao-ig" name="certificacao-ig"></textarea>
+
+                    <label for="auditorias-inspecoes">Auditorias e Inspeções</label>
+                    <textarea id="auditorias-inspecoes" name="auditorias-inspecoes"></textarea>
+
+                    <!-- 9. Produção de Carne -->
+                    <h3 id="producao-carne">Produção de Carne</h3>
+                    <label for="registro-abate">Registro do Abate</label>
+                    <textarea id="registro-abate" name="registro-abate"></textarea>
+
+                    <label for="destino-carne">Destino da Carne</label>
+                    <textarea id="destino-carne" name="destino-carne"></textarea>
+
+                    <label for="controle-qualidade">Controle de Qualidade</label>
+                    <textarea id="controle-qualidade" name="controle-qualidade"></textarea>
+
+                    <!-- 10. Documentação Legal e Compliance -->
+                    <h3 id="documentacao-legal">Documentação Legal e Compliance</h3>
+                    <label for="certificados-sanidade">Certificados de Sanidade</label>
+                    <textarea id="certificados-sanidade" name="certificados-sanidade"></textarea>
+
+                    <label for="licencas">Licenças</label>
+                    <textarea id="licencas" name="licencas"></textarea>
+
+                    <label for="relatorios-conformidade">Relatórios de Conformidade</label>
+                    <textarea id="relatorios-conformidade" name="relatorios-conformidade"></textarea>
+
+                    <!-- 11. Segurança e Controle de Acesso -->
+                    <h3 id="seguranca">Segurança e Controle de Acesso</h3>
+                    <label for="registros-acesso">Registros de Acesso</label>
+                    <textarea id="registros-acesso" name="registros-acesso"></textarea>
+
+                    <label for="controle-usuarios">Controle de Usuários</label>
+                    <textarea id="controle-usuarios" name="controle-usuarios"></textarea>
+
+                    <!-- 12. Informações Adicionais -->
+                    <h3 id="informacoes-adicionais">Informações Adicionais</h3>
+                    <label for="observacoes">Observações Gerais</label>
+                    <textarea id="observacoes" name="observacoes"></textarea>
+
+                    <label for="medidas-preventivas">Medidas Preventivas</label>
+                    <textarea id="medidas-preventivas" name="medidas-preventivas"></textarea>
+
+                    <label for="outras-informacoes">Outras Informações</label>
+                    <textarea id="outras-informacoes" name="outras-informacoes"></textarea>
+
+                    <button type="submit">Salvar Informações</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            // Aqui você pode substituir pelo link específico do animal
+            const animalId = '12345'; // Substitua isso pela ID ou informações relevantes do animal
+            const qrCodeUrl = `https://exemplo.com/animal/${animalId}`; // URL que o QR Code deve redirecionar
+
+            $('#qrcode-container').qrcode({
+                text: qrCodeUrl,
+                width: 128,
+                height: 128
+            });
+        });
+    </script>
+</body>
+</html>

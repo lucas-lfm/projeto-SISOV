@@ -1,0 +1,302 @@
+/* Variáveis de cores */
+:root {
+    --primary-color: #005f73;
+    --secondary-color: #007f7f;
+    --dark-color: #333;
+    --light-color: #f0f0f0;
+    --white-color: #fff;
+    --text-color: #333;
+    --background-color: #f7f7f7;
+}
+
+/* Corpo */
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+
+    position: relative;
+}
+
+
+/* Cabeçalho */
+header {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: var(--white-color);
+    padding: 15px 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header h1 {
+    font-size: 1.8em;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: var(--white-color);
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background 0.3s;
+    font-weight: 600;
+}
+
+nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Seções */
+main {
+    padding-top: 80px;
+}
+
+section {
+    padding: 60px 0;
+    text-align: center;
+    background-color: var(--light-color);
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Botões */
+button {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Formulário */
+form {
+    max-width: 400px;
+    margin: 20px auto;
+    background-color: var(--white-color);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--text-color);
+}
+
+form input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Rodapé */
+footer {
+    background-color: var(--dark-color);
+    color: var(--white-color);
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 20px;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilização para a seção de benefícios */
+#benefits {
+    background-color: #f8f8f8;
+    padding: 40px 0;
+    text-align: center;
+}
+
+#benefits h2 {
+    margin-bottom: 30px;
+    color: var(--primary-color);
+}
+
+/* Estilização dos cards */
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 0 20px;
+}
+
+.card {
+    background-color: var(--white-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 300px;
+    text-align: left;
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* Títulos e textos dos cards */
+.card h3 {
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.card p {
+    color: var(--text-color);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Estilo para a imagem de fundo com efeito */
+body {
+    position: relative;
+}
+
+/* Container da imagem de fundo */
+.background-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%; /* Ajuste a altura para cortar a imagem no meio */
+    overflow: hidden;
+    z-index: -1;
+}
+
+/* Estilo da imagem */
+.background-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(8px) brightness(60%); /* Aplica desfoque e diminui o brilho */
+    opacity: 0.7; /* Reduz a opacidade para suavizar a imagem */
+}
+
+/* Destaque */
+.highlight {
+    background-color: var(--secondary-color);
+    color: var(--white-color);
+    padding: 30px 20px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+.highlight .container {
+    padding: 0 172px;
+    justify-content: center;
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+}
+
+.highlight .container h2 {
+    font-size: 38px;
+    text-align: center;
+}
+.highlight .container p {
+    font-size: 24px;
+}
+
+.highlight-image {
+    width: 400px; /* Largura da imagem */
+    height: 400px; /* Altura igual à largura para manter a forma circular */
+    border-radius: 50%; /* Torna a imagem arredondada */
+    border: 3px solid var(--white-color); /* Borda branca */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para dar destaque */
+    object-fit: cover; /* Cobre a área do círculo, mantendo a proporção */
+    object-position: 75% center; /* Move a imagem 20% para a direita */
+}
+
+.line-l1 {
+    border-bottom: 2px solid green; /* Cor e espessura da linha */
+    display: inline-block; /* Faz com que a linha se ajuste ao texto */
+    padding-bottom: 5px; /* Espaço entre o texto e a linha */
+}
+
+#about .container {
+    max-width: 1200px; /* Limite de largura */
+    margin: 0 auto; /* Centraliza o container */
+    padding: 40px 20px; /* Espaçamento interno maior */
+    background-color: #f9f9f9; /* Fundo leve para destacar a seção */
+    border-radius: 10px; /* Bordas arredondadas do container */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.about-content {
+    display: flex; /* Ativa o Flexbox */
+    align-items: flex-start; /* Alinha os itens no topo */
+    justify-content: space-between; /* Espaço entre os itens */
+}
+
+.text-content {
+    flex: 1; /* Permite que o texto ocupe o espaço restante */
+    margin-right: 30px; /* Espaço entre texto e imagem */
+}
+
+.text-content h3 {
+    margin-top: 20px; /* Espaço acima dos subtítulos */
+    color: #333; /* Cor do texto dos subtítulos */
+}
+
+.text-content h2 {
+    margin-bottom: 24px;
+}
+
+.text-content p {
+    margin-bottom: 15px; /* Espaço abaixo dos parágrafos */
+    line-height: 1.6; /* Aumenta o espaçamento entre linhas */
+    color: #555; /* Cor do texto */
+}
+
+.text-content ul {
+    margin: 10px 0; /* Margem para a lista */
+    padding-left: 20px; /* Espaçamento à esquerda */
+    align-items: center;
+    justify-content: center;
+}
+
+.text-content li {
+    margin-bottom: 8px; /* Espaço entre itens da lista */
+}
+
+#about .container img {
+    width: 400px; /* Largura da imagem */
+    height: 50vw; /* Altura igual à largura para manter a forma circular */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para dar destaque */
+    object-fit: cover; /* Cobre a área do círculo, mantendo a proporção */
+    object-position: center; /* Move a imagem 20% para a direita */
+}

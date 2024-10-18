@@ -6,31 +6,44 @@ const { body, validationResult } = require('express-validator');
 
 const router = express.Router();
 
-// Função para ler dados do db.json
+// Função para ler dados do db.json com tratamento de erros
 const readData = () => {
-  const dataPath = path.join(__dirname, '../config/db.json');
+  console.log("Lendo dados do db.json");
+  const dataPath = path.join(__dirname, '../data/db.json');
   try {
     const jsonData = fs.readFileSync(dataPath, 'utf8');
     const parsedData = JSON.parse(jsonData);
-    return parsedData.users || []; // Retorna um array vazio se 'users' não existir
+    if (!parsedData || !Array.isArray(parsedData.usuarios)) {
+      // Verifica se 'parsedData' é válido e se 'usuarios' é um array
+      console.warn('Estrutura de dados inválida. Esperado um array de usuários.');
+      return []; // Retorna um array vazio caso o formato esteja incorreto
+    }
+    return parsedData.usuarios;
   } catch (error) {
-    console.error('Erro ao ler o arquivo db.json:', error);
+    console.error('Erro ao ler o arquivo db.json:', error.message);
     return []; // Retorna um array vazio em caso de erro
   }
 };
 
-
-// Função para escrever dados no db.json
+// Função para escrever dados no db.json com tratamento de erros
 const writeData = (data) => {
-  const dataPath = path.join(__dirname, '../config/db.json');
-  fs.writeFileSync(dataPath, JSON.stringify({ users: data }, null, 2)); // Formato correto para escrever
+  const dataPath = path.join(__dirname, '../data/db.json');
+  try {
+    fs.writeFileSync(dataPath, JSON.stringify({ users: data }, null, 2));
+    console.log('Dados salvos com sucesso no db.json');
+  } catch (error) {
+    console.error('Erro ao salvar dados no db.json:', error.message);
+  }
 };
 
 // Rota para registrar usuário
-router.post('/register', [
+router.post('/users/register', [
   body('username').notEmpty().withMessage('Nome de usuário é obrigatório.'),
   body('password').isLength({ min: 6 }).withMessage('A senha deve ter pelo menos 6 caracteres.')
 ], (req, res) => {
+  // Log para verificar o corpo da requisição
+  console.log('Dados recebidos:', req.body); // Adicione esta linha
+
   // Verificar erros de validação
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -57,10 +70,13 @@ router.post('/register', [
 });
 
 // Rota para login de usuário
-router.post('/login', [
+router.post('/users/login', [
   body('username').notEmpty().withMessage('Nome de usuário é obrigatório.'),
   body('password').notEmpty().withMessage('Senha é obrigatória.')
 ], (req, res) => {
+  // Log para verificar o corpo da requisição
+  console.log('Dados de login recebidos:', req.body);
+
   // Verificar erros de validação
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -78,13 +94,30 @@ router.post('/login', [
     return res.status(401).json({ message: 'Credenciais inválidas.' });
   }
 
-  return res.status(200).json({ message: 'Login bem-sucedido!' });
+  // Retornar sucesso com as informações do usuário
+  return res.status(200).json({ message: 'Login bem-sucedido!', userId: user.id, username: user.username });
 });
+
 
 // Rota para listar usuários
 router.get('/users', (req, res) => {
   const users = readData();
   return res.status(200).json(users);
 });
+
+// Rota para obter as informações do usuário pelo ID
+router.get('/users/:id', (req, res) => {
+  const userId = parseInt(req.params.id, 10);
+  const users = readData();
+
+  // Procurar o usuário com o ID correspondente
+  const user = users.find(user => user.id === userId);
+  if (!user) {
+    return res.status(404).json({ message: 'Usuário não encontrado.' });
+  }
+
+  return res.status(200).json(user);
+});
+
 
 module.exports = router;

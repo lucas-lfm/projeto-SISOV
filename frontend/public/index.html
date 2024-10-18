@@ -4,13 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SISOV - Sistema de Rastreabilidade de Ovinos</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/global.css">
+    <link rel="stylesheet" href="./css/home.css">
 </head>
 
 <body>
+    <div class="background-container">
+        <img src="./imgs/home/WhatsApp-Image-2022-01-26-at-16.04.04-1-1200x800.png" alt="Imagem de fundo">
+    </div>
+    
     <header>
         <div class="container">
-            <h1>SISOV</h1>
+            <div>
+                <h1>SISOV</h1>
+                <p>Sistema de Rastreamento de Ovinos</p>
+            </div>
             <nav>
                 <ul>
                     <li><a href="#home">Início</a></li>
@@ -23,42 +31,95 @@
         </div>
     </header>
 
-    <section id="home">
-        <div class="container">
-            <h2>Bem-vindo ao SISOV</h2>
-            <p>O Sistema de Rastreabilidade de Ovinos no Ceará, garantindo qualidade e procedência da carne.</p>
-            <button onclick="showLogin()">Acesse o Sistema</button>
-        </div>
-    </section>
+    <main>
+        <section id="highlight" class="highlight">
+            <div class="container">
+                <h2>A força da produção está em suas mãos!</h2>
+                <p>Rastreando a produção com responsabilidade e informação para todos.</p>
+            </div>
+            <img src="../public/imgs/home/pexels-jakeheinemann-1482101.jpg" alt="" class="highlight-image">
+        </section>
 
-    <section id="about">
-        <div class="container">
-            <h2>Sobre o SISOV</h2>
-            <p>O SISOV é um sistema que permite rastrear a carne de ovinos, garantindo conformidade com as regras de Identidade Geográfica (IG).</p>
-        </div>
-    </section>
+        <section id="home">
+            <div class="container">
+                <h2>Bem-vindo ao SISOV</h2>
+                <p>O Sistema de Rastreabilidade de Ovinos no Ceará, garantindo qualidade e procedência da carne.</p>
+                <button onclick="showLogin()">Acesse o Sistema</button>
+            </div>
+        </section>
 
-    <section id="login" class="hidden">
-        <div class="container">
-            <h2>Login</h2>
-            <form id="loginForm">
-                <label for="Formlogin_username">Nome de Usuário:</label>
-                <input type="text" id="Formlogin_username" required placeholder="Digite seu nome de usuário">
+        <section id="login" class="hidden">
+            <div class="container">
+                <h2 class="line-l1">Login</h2>
+                <form id="loginForm">
+                    <label for="Formlogin_username">Nome de Usuário:</label>
+                    <input type="text" id="Formlogin_username" required placeholder="Digite seu nome de usuário">
+            
+                    <label for="Formlogin_password">Senha:</label>
+                    <input type="password" id="Formlogin_password" required placeholder="Digite sua senha">
+            
+                    <button type="submit">Entrar</button>
+                </form>           
+            </div>
+        </section>
+
+
+        <section id="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="text-content">
+                        <h2 class="line-l1">Sobre o SISOV</h2>
+                        <p>O SISOV (Sistema de Rastreabilidade de Ovinos) é uma plataforma inovadora dedicada ao rastreamento e à gestão de informações sobre a carne de ovinos. Seu principal objetivo é garantir a conformidade com as normas de Identidade Geográfica (IG), proporcionando uma rastreabilidade completa e confiável.</p>
+                        
+                        <h3>Por que o SISOV é importante?</h3>
+                        <p>A rastreabilidade da carne de ovinos é crucial para assegurar a qualidade e a segurança alimentar. O SISOV permite que produtores e consumidores validem informações sobre a origem da carne, aumentando a transparência e a confiança no produto. Com isso, buscamos promover práticas sustentáveis e responsáveis na produção de carne.</p>
+                        
+                        <h3>Como o SISOV funciona?</h3>
+                        <p>Através de um sistema intuitivo, o SISOV coleta e organiza dados essenciais relacionados aos rebanhos, como:</p>
+                        <ul>
+                            <li>Identificação dos animais</li>
+                            <li>Histórico de saúde e manejo</li>
+                            <li>Documentação legal e compliance</li>
+                            <li>Informações de alimentação e suplementação</li>
+                            <li>Movimentação dos animais</li>
+                        </ul>
+                        
+                        <h3>Nossos Compromissos</h3>
+                        <p>Estamos comprometidos com a qualidade, a segurança e a responsabilidade na produção de carne de ovinos. O SISOV é uma ferramenta que visa não apenas facilitar a gestão dos rebanhos, mas também fomentar uma cultura de transparência e confiança no setor.</p>
+                    </div>
+                    <img src="./imgs/home/cabritos_home.jpg" alt="Cabritos">
+                </div>
+            </div>
+        </section>
+
+        <section id="benefits">
+            <div class="container">
+                <h2 class="line-l1">Vantagens do SISOV</h2>
+                <div class="cards">
+                    <div class="card">
+                        <h3>Rastreabilidade Completa</h3>
+                        <p>Monitore toda a cadeia de produção, garantindo a procedência dos produtos.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Conformidade Legal</h3>
+                        <p>Atenda aos requisitos de Identidade Geográfica e outras regulamentações.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Qualidade Garantida</h3>
+                        <p>Controle de qualidade rigoroso para manter os padrões elevados de produção.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
         
-                <label for="Formlogin_password">Senha:</label>
-                <input type="password" id="Formlogin_password" required placeholder="Digite sua senha">
-        
-                <button type="submit">Entrar</button>
-            </form>           
-        </div>
-    </section>
 
-    <section id="contact">
-        <div class="container">
-            <h2>Contato</h2>
-            <p>Entre em contato conosco para mais informações sobre o SISOV.</p>
-        </div>
-    </section>
+        <section id="contact">
+            <div class="container">
+                <h2 class="line-l1">Contato</h2>
+                <p>Entre em contato conosco para mais informações sobre o SISOV.</p>
+            </div>
+        </section>
+    </main>
 
     <footer>
         <div class="container">
@@ -68,14 +129,10 @@
 
     <script>
         function showLogin() {
-            const homeSection = document.getElementById('home');
-            homeSection.classList.add('hidden');
-
             const loginSection = document.getElementById('login');
-            loginSection.classList.remove('hidden')
+            loginSection.classList.remove('hidden');
         }
     </script>
     <script src="./js/script.js"></script>
 </body>
-
 </html>

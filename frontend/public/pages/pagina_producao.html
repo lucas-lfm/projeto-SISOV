@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SISOV - Produção</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/pagina_producao.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="../js/script.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
@@ -37,23 +38,34 @@
     </nav>
 
     <main>
-        <h1 class="welcome-quote">Bem-Vindo(a), João!</h1>
+        <h1 class="welcome-quote">Bem-Vindo(a), <span class="welcome-quote-user-name"></span>!</h1>
 
         <section class="status-rebanho">
             <h2 class="section-title">Status do Rebanho</h2>
             <div class="status-container">
                 <div class="status-item">
+                    <img src="../imgs/home/cabra_home.png" alt="">
                     <h3>Total de Ovinos</h3>
-                    <p>150</p>
+                    <p id="total-ovinos">0</p>
                 </div>
                 <div class="status-item">
+                    <img src="../imgs/home/cuidados-de-saude.png" alt="">
                     <h3>Saúde Geral</h3>
-                    <p>85% saudáveis</p>
+                    <p id="saude-geral">0% saudáveis</p>
                 </div>
                 <div class="status-item">
+                    <img src="../imgs/home/vacinado.png" alt="">
                     <h3>Última Vacinação</h3>
-                    <p>05/10/2024</p>
+                    <p id="ultima-vacinacao">Nunca vacinado</p>
                 </div>
+            </div>
+        </section>
+
+        <section id="management" class="section">
+            <div class="container">
+                <h2 class="section-title">Gerenciamento de Rebanho</h2>
+                <p>Gerencie seu rebanho, incluindo cadastro de novos ovinos e controle de saúde.</p>
+                <button onclick="manageHerd()">Gerenciar Rebanho</button>
             </div>
         </section>
 
@@ -68,15 +80,17 @@
             </div>
         </section>
 
+        <!--
         <section id="reqs_in_section" class="section">
             <div class="container">
                 <h2>Entrada de Requisições RFID</h2>
             </div>
         </section>
+        As entradas de produção serão inseridas aqui dinamicamente -->
 
         <section id="production" class="section">
             <div class="container">
-                <h2>Registro de Produção</h2>
+                <h2 class="section-title">Registro de Produção</h2>
                 <form id="productionForm" onsubmit="return handleProduction(event)">
                     <div class="form-group">
                         <label for="date">Data:</label>
@@ -100,6 +114,7 @@
                     </div>
                     <button type="submit">Registrar Produção</button>
                 </form>
+                
 
                 <h3>Produções Recentes</h3>
                 <table id="productionTable">
@@ -113,7 +128,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- As entradas de produção serão inseridas aqui dinamicamente -->
+
                     </tbody>
                 </table>
             </div>
@@ -126,19 +141,45 @@
                 <button onclick="generateReport()">Gerar Relatório</button>
             </div>
         </section>
-
-        <section id="management" class="section">
-            <div class="container">
-                <h2>Gerenciamento de Rebanho</h2>
-                <p>Gerencie seu rebanho, incluindo cadastro de novos ovinos e controle de saúde.</p>
-                <button onclick="manageHerd()">Gerenciar Rebanho</button>
-            </div>
-        </section>
     </main>
 
     <footer>
         <p>&copy; 2024 SISOV - Sistema de Rastreamento de Ovinos. Todos os direitos reservados.</p>
     </footer>
+
+    <script>
+        fetch('http://localhost:3001/usuarios/' + localStorage.getItem('userId'))
+            .then(response => response.json())
+            .then(data => {
+                var nome_usuario = data.informacoes_produtor.nome;
+                document.getElementsByClassName('welcome-quote-user-name')[0].textContent = nome_usuario;
+            })
+            .catch(error => console.error('Erro ao buscar os dados:', error));
+
+            fetch('http://localhost:3001/usuarios/' + localStorage.getItem('userId'))
+        .then(response => response.json())
+        .then(data => {
+            // Total de Ovinos
+            const totalOvinos = data.animais.length; // Contando o número total de animais
+            document.getElementById('total-ovinos').textContent = totalOvinos;
+
+            // Saúde Geral
+            const saudaveis = data.animais.filter(animal => {
+                // Vamos considerar saudável se não houver doenças registradas
+                return animal.historico_saude.historico_doencas === "Nenhuma doença registrada";
+            }).length;
+            const percentualSaudaveis = ((saudaveis / totalOvinos) * 100).toFixed(2); // Cálculo de percentual
+            document.getElementById('saude-geral').textContent = `${percentualSaudaveis}% saudáveis`;
+
+            // Última Vacinação
+            const vacinacoes = data.animais.map(animal => animal.historico_saude.vacinacoes);
+            // Aqui, você pode implementar uma lógica para encontrar a última vacinação
+            // Para simplificar, vamos considerar a primeira vacinação como a última (você pode personalizar isso)
+            const ultimaVacinacao = vacinacoes.length > 0 ? vacinacoes[0] : "Nunca vacinado";
+            document.getElementById('ultima-vacinacao').textContent = ultimaVacinacao;
+        })
+        .catch(error => console.error('Erro ao buscar os dados:', error));
+    </script>
 
     <script>
         // Função para registrar a produção
@@ -165,40 +206,32 @@
         }
 
         // Função para gerar o relatório em PDF
-        async function generateReport() {
+        function generateReport() {
             const { jsPDF } = window.jspdf;
-
             const doc = new jsPDF();
-            doc.setFontSize(16);
             doc.text("Relatório de Produção de Carne de Ovinos", 10, 10);
-            doc.setFontSize(12);
+            doc.text("Produções Recentes:", 10, 20);
 
-            const tableData = [];
-            const rows = document.querySelectorAll("#productionTable tbody tr");
-            rows.forEach(row => {
-                const cols = row.querySelectorAll("td");
-                const rowData = Array.from(cols).map(col => col.textContent);
-                tableData.push(rowData);
-            });
+            const tableBody = document.getElementById("productionTable").getElementsByTagName('tbody')[0];
+            const rows = tableBody.getElementsByTagName('tr');
+            let y = 30;
 
-            doc.autoTable({
-                head: [['Data', 'Quantidade (kg)', 'ID do Animal', 'Peso do Animal (kg)', 'Observações']],
-                body: tableData,
-            });
+            for (let row of rows) {
+                const cells = row.getElementsByTagName('td');
+                const rowData = [];
+                for (let cell of cells) {
+                    rowData.push(cell.textContent);
+                }
+                doc.text(rowData.join(" | "), 10, y);
+                y += 10;
+            }
 
             doc.save("relatorio_producao_ovinos.pdf");
         }
 
-        // Função para gerenciar o rebanho
+        // Função para gerenciar rebanho
         function manageHerd() {
-            alert("Gerenciando Rebanho!");
-            // Implementar a lógica para gerenciar o rebanho
-        }
-
-        // Função para alternar o menu lateral
-        function toggleMenu() {
-            const menu = document.getElementById("menu-lateral");
-            menu.classList.toggle("aberto");
+            window.location.href = "rebanho.html"; // Navega para a página de gerenciamento do rebanho
         }
     </script>
 </body>
