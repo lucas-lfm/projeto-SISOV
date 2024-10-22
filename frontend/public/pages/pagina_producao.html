@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../css/global.css">
     <link rel="stylesheet" href="../css/pagina_producao.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="../js/script.js" defer></script>
+    <script src="../js/config.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
     <script src="../js/functions.js" defer></script>
 </head>
@@ -148,7 +148,13 @@
     </footer>
 
     <script>
-        fetch('http://localhost:3001/usuarios/' + localStorage.getItem('userId'))
+        // Defina seu IP local manualmente (ou utilize a função de obter IP que você pode ter)
+        // Arquivo config.js
+        var localIpAddress = '192.168.0.13'; // Substitua pelo IP correto
+
+        // Use esse IP para suas requisições
+        // Atualize as chamadas para localIPAddress
+        fetch(`http://${localIpAddress}:3001/usuarios/` + localStorage.getItem('userId'))
             .then(response => response.json())
             .then(data => {
                 var nome_usuario = data.informacoes_produtor.nome;
@@ -156,30 +162,24 @@
             })
             .catch(error => console.error('Erro ao buscar os dados:', error));
 
-            fetch('http://localhost:3001/usuarios/' + localStorage.getItem('userId'))
-        .then(response => response.json())
-        .then(data => {
-            // Total de Ovinos
-            const totalOvinos = data.animais.length; // Contando o número total de animais
-            document.getElementById('total-ovinos').textContent = totalOvinos;
+        fetch(`http://${localIpAddress}:3001/usuarios/` + localStorage.getItem('userId'))
+            .then(response => response.json())
+            .then(data => {
+                const totalOvinos = data.animais.length;
+                document.getElementById('total-ovinos').textContent = totalOvinos;
 
-            // Saúde Geral
-            const saudaveis = data.animais.filter(animal => {
-                // Vamos considerar saudável se não houver doenças registradas
-                return animal.historico_saude.historico_doencas === "Nenhuma doença registrada";
-            }).length;
-            const percentualSaudaveis = ((saudaveis / totalOvinos) * 100).toFixed(2); // Cálculo de percentual
-            document.getElementById('saude-geral').textContent = `${percentualSaudaveis}% saudáveis`;
+                const saudaveis = data.animais.filter(animal => animal.historico_saude.historico_doencas === "Nenhuma doença registrada").length;
+                const percentualSaudaveis = ((saudaveis / totalOvinos) * 100).toFixed(2);
+                document.getElementById('saude-geral').textContent = `${percentualSaudaveis}% saudáveis`;
 
-            // Última Vacinação
-            const vacinacoes = data.animais.map(animal => animal.historico_saude.vacinacoes);
-            // Aqui, você pode implementar uma lógica para encontrar a última vacinação
-            // Para simplificar, vamos considerar a primeira vacinação como a última (você pode personalizar isso)
-            const ultimaVacinacao = vacinacoes.length > 0 ? vacinacoes[0] : "Nunca vacinado";
-            document.getElementById('ultima-vacinacao').textContent = ultimaVacinacao;
-        })
-        .catch(error => console.error('Erro ao buscar os dados:', error));
-    </script>
+                const vacinacoes = data.animais.map(animal => animal.historico_saude.vacinacoes);
+                const ultimaVacinacao = vacinacoes.length > 0 ? vacinacoes[0] : "Nunca vacinado";
+                document.getElementById('ultima-vacinacao').textContent = ultimaVacinacao;
+            })
+            .catch(error => console.error('Erro ao buscar os dados:', error));
+
+        </script>
+        
 
     <script>
         // Função para registrar a produção

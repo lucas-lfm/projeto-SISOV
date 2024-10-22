@@ -1,3 +1,79 @@
+:root {
+    --dark-color: #2c3e50; /* Cor escura para o menu lateral */
+    --white-color: #ecf0f1; /* Cor branca para o texto */
+    --secondary-color: #3498db; /* Cor secundária para destaques */
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: var(--secondary-color);
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px;
+}
+
+.card {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    width: 200px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card p {
+    margin-top: 6px;
+}
+
+.card img {
+    width: 100%;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #333;
+    color: #fff;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
 /* Variáveis de Cor */
 :root {
     --dark-color: #2c3e50; /* Cor escura para o menu lateral */
@@ -170,10 +246,6 @@ button:hover {
     transform: scale(1.05); /* Aumenta ligeiramente o botão ao passar o mouse */
 }
 
-#productionForm {
-    margin-bottom: 40px;
-}
-
 /* Tabela de Produção */
 #productionTable {
     width: 100%;
@@ -201,65 +273,4 @@ button:hover {
 .btn-container {
     padding: 8px;
     margin: 8px 0;
-}
-
-.card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 20px;
-}
-
-.card {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 20px;
-    margin: 10px;
-    width: 200px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s;
-}
-
-.card:hover {
-    transform: scale(1.05);
-}
-
-footer {
-    text-align: center;
-    padding: 1rem;
-    background-color: #333;
-    color: #fff;
-    width: 100%;
-    bottom: 0;
-}
-
-.menu-lateral ul {
-    list-style: none;
-    padding: 0 8px;
-}
-
-.menu-lateral ul li {
-    margin: 15px 0;
-    display: flex;
-    align-items: center;
-}
-
-.menu-lateral ul li img {
-    width: 30px;
-    height: 30px;
-    margin-right: 10px;
-}
-
-.menu-lateral ul li a {
-    color: var(--white-color);
-    text-decoration: none;
-    padding: 10px 0;
-    display: block;
-    transition: background-color 0.3s;
-    border-radius: 5px; /* Arredonda os cantos */
-}
-
-.menu-lateral ul li a:hover {
-    background-color: var(--secondary-color);
 }

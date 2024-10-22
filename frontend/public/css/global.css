@@ -37,6 +37,7 @@ header {
 main {
     padding: 60px 20px 0;
     margin-top: 60px; /* Ajuste para evitar sobreposição com o cabeçalho fixo */
+    width: 100%;
   }
 
 /* Navegação */

@@ -13,18 +13,18 @@
         <div class="sidebar">
             <h2>Menu</h2>
             <ul>
-                <li><a href="#informacoes-produtor">Informações do Produtor</a></li>
-                <li><a href="#identificacao-propriedade">Identificação da Propriedade</a></li>
-                <li><a href="#dados-rebanho">Dados do Rebanho</a></li>
-                <li><a href="#historico-saude">Histórico de Saúde e Manejo</a></li>
-                <li><a href="#alimentacao">Alimentação e Suplementação</a></li>
-                <li><a href="#movimentacao">Movimentação dos Animais</a></li>
-                <li><a href="#reproducao">Reprodução</a></li>
-                <li><a href="#rastreabilidade">Rastreamento e Certificação</a></li>
-                <li><a href="#producao-carne">Produção de Carne</a></li>
-                <li><a href="#documentacao-legal">Documentação Legal e Compliance</a></li>
-                <li><a href="#seguranca">Segurança e Controle de Acesso</a></li>
-                <li><a href="#informacoes-adicionais">Informações Adicionais</a></li>
+                <li><img src="../imgs/fazendeiro.png" alt="Fazendeiro"/><a href="produtor.html">Informações do Produtor</a></li>
+                <li><img src="../imgs/propriedade.png" alt="Propriedade"/><a href="propriedade.html">Identificação da Propriedade</a></li>
+                <li><img src="../imgs/rebanho.png" alt="Rebanho"/><a href="rebanho.html">Dados do Rebanho</a></li>
+                <li><img src="../imgs/medkit_vacina.png" alt="Vacinação"/><a href="saude.html">Histórico de Saúde e Manejo</a></li>
+                <li><img src="../imgs/vegetais-comida.png" alt="Alimentação"/><a href="alimentacao.html">Alimentação e Suplementação</a></li>
+                <li><img src="../imgs/rebanho2.png" alt="Movimentação"/><a href="movimentacao.html">Movimentação dos Animais</a></li>
+                <li><img src="../imgs/reproducao.png" alt="Reprodução"/><a href="reproducao.html">Reprodução</a></li>
+                <li><img src="../imgs/rastreamento.png" alt="Rastreamento"/><a href="rastreamento.html">Rastreamento e Certificação</a></li>
+                <li><img src="../imgs/carne.png" alt="Produção de Carne"/><a href="carne.html">Produção de Carne</a></li>
+                <li><img src="../imgs/documentacao.png" alt="Documentação"/><a href="documentacao.html">Documentação Legal e Compliance</a></li>
+                <li><img src="../imgs/seguranca.png" alt="Segurança"/><a href="seguranca.html">Segurança e Controle de Acesso</a></li>
+                <li><a href="informacoes.html">Informações Adicionais</a></li>
             </ul>
         </div>
 
@@ -150,24 +150,24 @@
                     <input type="text" id="codigo-sisov" name="codigo-sisov">
 
                     <label for="certificacao-ig">Certificação de IG</label>
-                    <textarea id="certificacao-ig" name="certificacao-ig"></textarea>
+                    <input type="text" id="certificacao-ig" name="certificacao-ig">
 
                     <label for="auditorias-inspecoes">Auditorias e Inspeções</label>
                     <textarea id="auditorias-inspecoes" name="auditorias-inspecoes"></textarea>
 
                     <!-- 9. Produção de Carne -->
-                    <h3 id="producao-carne">Produção de Carne</h3>
+                    <h3 id="produzindo-carne">Produção de Carne</h3>
                     <label for="registro-abate">Registro do Abate</label>
-                    <textarea id="registro-abate" name="registro-abate"></textarea>
+                    <input type="text" id="registro-abate" name="registro-abate">
 
                     <label for="destino-carne">Destino da Carne</label>
-                    <textarea id="destino-carne" name="destino-carne"></textarea>
+                    <input type="text" id="destino-carne" name="destino-carne">
 
                     <label for="controle-qualidade">Controle de Qualidade</label>
                     <textarea id="controle-qualidade" name="controle-qualidade"></textarea>
 
                     <!-- 10. Documentação Legal e Compliance -->
-                    <h3 id="documentacao-legal">Documentação Legal e Compliance</h3>
+                    <h3 id="documentacao">Documentação Legal e Compliance</h3>
                     <label for="certificados-sanidade">Certificados de Sanidade</label>
                     <textarea id="certificados-sanidade" name="certificados-sanidade"></textarea>
 
@@ -178,7 +178,7 @@
                     <textarea id="relatorios-conformidade" name="relatorios-conformidade"></textarea>
 
                     <!-- 11. Segurança e Controle de Acesso -->
-                    <h3 id="seguranca">Segurança e Controle de Acesso</h3>
+                    <h3 id="seguranca-controle">Segurança e Controle de Acesso</h3>
                     <label for="registros-acesso">Registros de Acesso</label>
                     <textarea id="registros-acesso" name="registros-acesso"></textarea>
 
@@ -196,24 +196,70 @@
                     <label for="outras-informacoes">Outras Informações</label>
                     <textarea id="outras-informacoes" name="outras-informacoes"></textarea>
 
-                    <button type="submit">Salvar Informações</button>
+                    <button type="submit">Salvar</button>
                 </form>
+            </div>
+
+            <div class="card">
+                <div>
+                    <h2>Gerar PDF</h2>
+                    <button id="gerar-pdf">Gerar PDF</button>
+                </div>
+                <div>
+                    <h2>QR Code</h2>
+                    <div id="qr-code">
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
     <script>
-        $(document).ready(function() {
-            // Aqui você pode substituir pelo link específico do animal
-            const animalId = '12345'; // Substitua isso pela ID ou informações relevantes do animal
-            const qrCodeUrl = `https://exemplo.com/animal/${animalId}`; // URL que o QR Code deve redirecionar
+         const { jsPDF } = window.jspdf;
 
-            $('#qrcode-container').qrcode({
-                text: qrCodeUrl,
-                width: 128,
-                height: 128
-            });
+         // Arquivo config.js
+        var localIpAddress = '192.168.0.13'; // Substitua pelo IP correto
+
+
+        document.getElementById('gerar-pdf').addEventListener('click', async () => {
+            // Pegar dados do JSON server
+            const response = await fetch(`http://${localIpAddress}:3001/usuarios/${localStorage.getItem('userId')}`);
+            const data = await response.json();
+
+            const doc = new jsPDF();
+            doc.setFontSize(22);
+            doc.text("Informações do Animal", 10, 10);
+            doc.setFontSize(16);
+            doc.text("Dados do Produtor", 10, 20);
+
+            // Adiciona os dados ao PDF
+            doc.text(`Nome do Produtor: ${data.informacoes_produtor.nome}`, 10, 30);
+            doc.text(`Endereço: ${data.informacoes_produtor.endereco}`, 10, 40);
+            doc.text(`Registro: ${data.informacoes_produtor.registro}`, 10, 50);
+            doc.text(`Contato: ${data.informacoes_produtor.contato}`, 10, 60);
+
+            // Adicione outras informações conforme necessário
+
+            // Salvar o PDF em uma URL
+            const pdfBlob = doc.output('blob');
+            const pdfUrl = URL.createObjectURL(pdfBlob);
+
+            // Gerar QR Code com o link para o PDF
+            const qrCode = qrcode(0, 'L');
+            qrCode.addData(pdfUrl);
+            qrCode.make();
+            document.getElementById('qrcode').innerHTML = qrCode.createImgTag(6);
+
+            // Opcional: Download automático do PDF
+            doc.save('informacoes_animal.pdf');
         });
+    
+
+
+        gerarQRCode(); // Gerar o QR Code na inicialização
     </script>
 </body>
 </html>

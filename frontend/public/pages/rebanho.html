@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SISOV - Produção</title>
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/rebanho.css">
+</head>
+
+<body>
+    <header>
+        <div class="menu-hamburguer" onclick="toggleMenu()">&#9776;</div>
+        <h1 id="title-header">SISOV - Sistema de Rastreamento de Ovinos</h1>
+    </header>
+
+    <button class="btn-pers">Adicionar um Novo Animal</button>
+  
+    <nav id="menu-lateral" class="menu-lateral">
+        <button class="menu-fechar" onclick="toggleMenu()">×</button>
+        <h2>Painel de Ferramentas</h2>
+        <ul>
+            <li><img src="../imgs/fazendeiro.png" alt="Fazendeiro"/><a href="produtor.html">Informações do Produtor</a></li>
+            <li><img src="../imgs/propriedade.png" alt="Propriedade"/><a href="propriedade.html">Identificação da Propriedade</a></li>
+            <li><img src="../imgs/rebanho.png" alt="Rebanho"/><a href="rebanho.html">Dados do Rebanho</a></li>
+            <li><img src="../imgs/medkit_vacina.png" alt="Vacinação"/><a href="saude.html">Histórico de Saúde e Manejo</a></li>
+            <li><img src="../imgs/vegetais-comida.png" alt="Alimentação"/><a href="alimentacao.html">Alimentação e Suplementação</a></li>
+            <li><img src="../imgs/rebanho2.png" alt="Movimentação"/><a href="movimentacao.html">Movimentação dos Animais</a></li>
+            <li><img src="../imgs/reproducao.png" alt="Reprodução"/><a href="reproducao.html">Reprodução</a></li>
+            <li><img src="../imgs/rastreamento.png" alt="Rastreamento"/><a href="rastreamento.html">Rastreamento e Certificação</a></li>
+            <li><img src="../imgs/carne.png" alt="Produção de Carne"/><a href="carne.html">Produção de Carne</a></li>
+            <li><img src="../imgs/documentacao.png" alt="Documentação"/><a href="documentacao.html">Documentação Legal e Compliance</a></li>
+            <li><img src="../imgs/seguranca.png" alt="Segurança"/><a href="seguranca.html">Segurança e Controle de Acesso</a></li>
+            <li><a href="informacoes.html">Informações Adicionais</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="card-container">
+            <div class="card">
+                <img src="../imgs/animals_img_icon/produtor1_animal1.jpg" alt="">
+                <h2>Ovino 1</h2>
+                <p>Identificação: 001</p>
+                <p>Sexo: Macho</p>
+                <p>Raça: Dorper</p>
+                <p>Data de Nascimento: 01/01/2022</p>
+            </div>
+            <div class="card">
+                <h2>Ovino 2</h2>
+                <p>Identificação: 002</p>
+                <p>Sexo: Fêmea</p>
+                <p>Raça: Texel</p>
+                <p>Data de Nascimento: 05/02/2022</p>
+            </div>
+            <div class="card">
+                <h2>Ovino 3</h2>
+                <p>Identificação: 003</p>
+                <p>Sexo: Macho</p>
+                <p>Raça: Suffolk</p>
+                <p>Data de Nascimento: 10/03/2022</p>
+            </div>
+            <!-- Adicione mais cards conforme necessário -->
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 SISOV - Sistema de Rastreamento de Ovinos. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        
+        // Arquivo config.js
+        var localIpAddress = '192.168.0.13'; // Substitua pelo IP correto
+
+
+        async function fetchAnimais() {
+            try {
+                const userId = localStorage.getItem('userId'); // ID do usuário logado
+                // Use o IP local em vez de localhost
+                const response = await fetch(`http://${localIpAddress}:3001/usuarios/${userId}`);
+                if (!response.ok) {
+                    throw new Error('Erro ao obter os dados do usuário');
+                }
+                const usuario = await response.json(); // Recebe o usuário com os animais
+                
+                // Verifica se o usuário possui animais
+                if (usuario.animais && usuario.animais.length > 0) {
+                    exibirAnimais(usuario.animais); // Passa os animais para a função de exibição
+                } else {
+                    console.log('Nenhum animal encontrado para este produtor.');
+                }
+            } catch (error) {
+                console.error('Erro:', error);
+            }
+        }
+
+        // Função para exibir os animais na página
+        function exibirAnimais(animais) {
+            const cardContainer = document.querySelector('.card-container');
+            cardContainer.innerHTML = ''; // Limpar conteúdo atual
+
+            animais.forEach(animal => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <a href="" class="animal-link">
+                        <h2>${animal.nome_animal || 'Ovino'}</h2>
+                        <p>Identificação: ${animal.identificacao_animal}</p>
+                        <p>Sexo: ${animal.sexo}</p>
+                        <p>Raça: ${animal.raca}</p>
+                        <p>Data de Nascimento: ${animal.data_nascimento}</p>
+                    </a>
+                `;
+                cardContainer.appendChild(card);
+            });
+        }
+
+        // Chamar a função para buscar e exibir os animais ao carregar a página
+        document.addEventListener('DOMContentLoaded', fetchAnimais);
+
+    </script>
+</body>
+</html>

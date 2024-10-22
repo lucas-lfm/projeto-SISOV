@@ -11,3 +11,7 @@ function toggleMenu(model) {
     }
   }
   
+  function toggleMenu2() {
+    const menu = document.getElementById("menu-lateral");
+    menu.classList.toggle("show");
+}

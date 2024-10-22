@@ -42,12 +42,21 @@ body {
 
 .sidebar li {
     margin-bottom: 15px;
+    align-items: center;
+    display: flex;
+}
+
+.sidebar li img {
+    width: 30px;
+    height: 30px;
+    margin-right: 8px;
 }
 
 .sidebar a {
     text-decoration: none;
     color: #fff;
     font-size: 16px;
+    text-align: center;
 }
 
 .sidebar a:hover {
@@ -71,7 +80,7 @@ body {
 .main-content {
     margin-left: 250px;
     padding-top: 80px;
-    padding: 20px;
+    
     flex: 1;
     overflow-y: auto;
 }
@@ -80,6 +89,7 @@ body {
 form {
     display: flex;
     flex-direction: column;
+    width: 80%;
 }
 
 form label {
@@ -122,6 +132,10 @@ form button:hover {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 20px;
     margin-bottom: 20px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
 }
 
 .card h2 {
