@@ -89,9 +89,19 @@ body {
     background-color: #f4f4f4; /* Cor de fundo */
 }
 
+.card-container a {
+    text-decoration: none;
+    color: #000000; 
+}
+
 main {
     padding-top: 4px;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    text-align: center;
 }
+
 
 /* Título do cabeçalho */
 #title-header {

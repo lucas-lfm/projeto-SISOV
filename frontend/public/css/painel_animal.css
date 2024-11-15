@@ -15,6 +15,7 @@ body {
 .container {
     display: flex;
     min-height: 100vh;
+    flex-direction: column;
 }
 
 /* Sidebar */
@@ -90,6 +91,17 @@ form {
     display: flex;
     flex-direction: column;
     width: 80%;
+}
+
+body div img {
+    width: 500px;
+    margin-bottom: 40px;
+    border-radius: 5px;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
 }
 
 form label {

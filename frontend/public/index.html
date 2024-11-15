@@ -47,7 +47,9 @@
             <div class="container">
                 <h2>Bem-vindo ao SISOV</h2>
                 <p>O Sistema de Rastreabilidade de Ovinos no Ceará, garantindo qualidade e procedência da carne.</p>
-                <button onclick="showLogin()">Acesse o Sistema</button>
+                <a href="../public/pages/pagina_producao.html">
+                    <button onclick="showLogin()">Acesse o Sistema</button>
+                </a>
             </div>
         </section>
 
@@ -56,13 +58,15 @@
                 <h2 class="line-l1">Login</h2>
                 <form id="loginForm">
                     <label for="Formlogin_username">Nome de Usuário:</label>
-                    <input type="text" id="Formlogin_username" required placeholder="Digite seu nome de usuário">
+                    <input type="text" id="Formlogin_username" placeholder="Digite seu nome de usuário">
             
                     <label for="Formlogin_password">Senha:</label>
-                    <input type="password" id="Formlogin_password" required placeholder="Digite sua senha">
+                    <input type="password" id="Formlogin_password" placeholder="Digite sua senha">
             
-                    <button type="submit">Entrar</button>
                 </form>           
+                <a href="../public/pages/pagina_producao.html">
+                    <button>Entrar</button>
+                </a>
             </div>
         </section>
 
@@ -135,6 +139,7 @@
         </div>
     </footer>
 
+    <!--
     <script>
         function showLogin() {
             const loginSection = document.getElementById('login');
@@ -162,15 +167,16 @@
                 if (response.ok) {
                     alert(data.message);
                     localStorage.setItem('userId', data.userId);
-                    window.location.href = `../pages/pagina_producao.html?userId=${data.userId}`;
+                    // window.location.href = `../pages/pagina_producao.html?userId=${data.userId}`;
                 } else {
                     alert(data.message || 'Erro ao fazer login');
                 }
             } catch (error) {
                 console.error('Erro na solicitação:', error);
-                alert('Erro ao se conectar ao servidor.');
+                // alert('Erro ao se conectar ao servidor.');
             }
         });
     </script>
+    -->
 </body>
 </html>
