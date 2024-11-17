@@ -1,353 +1,221 @@
-:root {
-    --dark-color: #2c3e50; /* Cor escura para o menu lateral */
-    --white-color: #ecf0f1; /* Cor branca para o texto */
-    --secondary-color: #3498db; /* Cor secundária para destaques */
-}
-
-
-body {
-    font-family: Arial, sans-serif;
+/* Reset básico de margens e padding */
+* {
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    box-sizing: border-box;
 }
 
+/* Estilo do body e fontes */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    display: flex;              /* Torna o body um flex container */
+    flex-direction: column;     /* Alinha os itens na vertical */
+    height: 100vh;              /* Faz o body ocupar toda a altura da janela */
+}
+
+/* Cabeçalho */
 header {
-    background-color: var(--secondary-color);
-    color: #fff;
-    padding: 1rem;
+    background-color: #0894be; /* Mantendo a cor original do header */
+    color: white;
+    padding: 15px;
     text-align: center;
+    position: relative;
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
+/* Menu hambúrguer */
+.menu-hamburguer {
+    font-size: 30px;
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    cursor: pointer;
 }
 
-nav ul li {
-    display: inline;
-    margin: 0 10px;
+/* Título do cabeçalho */
+#title-header {
+    font-size: 1.8em;
+    font-weight: bold;
 }
 
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
+/* Botão de "Adicionar Novo Animal" */
+.btn-pers {
+    background-color: #0593ba;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.2em;
+    margin: 20px auto;
+    display: block;
+    text-align: center;
+    transition: background-color 0.3s;
+    cursor: pointer;
 }
 
+.btn-pers:hover {
+    background-color: #04556b;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-conteudo {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 500px;
+    position: relative;
+}
+
+/* Fechar modal */
+.fechar {
+    font-size: 30px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.fechar:hover {
+    color: #f44336;
+}
+
+/* Formulário dentro do modal */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    font-size: 1.1em;
+    margin-bottom: 5px;
+}
+
+input, select {
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+button[type="submit"] {
+    background-color: #0299ea;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1.2em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+}
+
+button[type="submit"]:hover {
+    background-color: #0daedf;
+}
+
+/* Estilo para a seção "Meu Rebanho" */
+main {
+    padding: 20px;
+    text-align: center;
+    flex: 1;                    /* Faz o main ocupar o espaço restante no layout */
+}
+
+/* Título principal do "Meu Rebanho" */
+h1 {
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Container dos cards de animais */
 .card-container {
     display: flex;
     flex-wrap: wrap;
+    gap: 20px;
     justify-content: center;
-    margin: 20px;
 }
 
+/* Estilo dos cards dos animais */
 .card {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
     padding: 20px;
-    margin: 10px;
-    width: 200px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s;
+    width: 250px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
 }
 
 .card:hover {
     transform: scale(1.05);
 }
 
-.card p {
-    margin-top: 6px;
+.card h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
 }
 
+/* Estilo das informações do animal */
+.card .informacao-animal {
+    font-size: 1em;
+    color: #555;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.card .informacao-animal span {
+    font-weight: bold;
+    color: #4CAF50; /* Verde para destacar as informações */
+}
+
+/* Estilo da foto do animal */
 .card img {
     width: 100%;
-}
-
-footer {
-    text-align: center;
-    padding: 1rem;
-    background-color: #333;
-    color: #fff;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-}
-
-/* Variáveis de Cor */
-:root {
-    --dark-color: #2c3e50; /* Cor escura para o menu lateral */
-    --white-color: #ecf0f1; /* Cor branca para o texto */
-    --secondary-color: #3498db; /* Cor secundária para destaques */
-}
-
-/* Estilos Globais */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4; /* Cor de fundo */
-}
-
-.card-container a {
-    text-decoration: none;
-    color: #000000; 
-}
-
-main {
-    padding-top: 4px;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    text-align: center;
-}
-
-
-/* Título do cabeçalho */
-#title-header {
-    font-size: 1.8em;
-    text-align: center; /* Centraliza o título */
-    color: var(--white-color); /* Cor do texto */
-}
-
-/* Menu */
-.menu-hamburguer {
-    font-size: 28px;
-    cursor: pointer;
-    margin-right: 18px;
-}
-
-.menu-fechar {
-    all: unset;
-    font-size: 28px;
-    cursor: pointer;
-    position: absolute;
-    top: 10%;
-    right: 15px;
-}
-
-/* Menu lateral */
-.menu-lateral {
-    position: fixed;
-    padding: 0 10px;
-    left: -300px;
-    top: 0;
-    width: 300px;
-    height: 100%;
-    background-color: var(--dark-color);
-    color: var(--white-color);
-    overflow-y: auto;
-    transition: left 0.3s ease;
-    padding-top: 100px;
-    z-index: 999;
-}
-
-.menu-lateral.ativo {
-    left: 0;
-}
-
-.menu-lateral ul {
-    list-style: none;
-    padding: 0 8px;
-}
-
-.menu-lateral ul li {
-    margin: 15px 0;
-    display: flex;
-    align-items: center;
-}
-
-.menu-lateral ul li img {
-    width: 30px;
-    height: 30px;
-    margin-right: 10px;
-}
-
-.menu-lateral ul li a {
-    color: var(--white-color);
-    text-decoration: none;
-    padding: 10px 0;
-    display: block;
-    transition: background-color 0.3s;
-    border-radius: 5px; /* Arredonda os cantos */
-}
-
-.menu-lateral ul li a:hover {
-    background-color: var(--secondary-color);
-}
-
-/* Boas-vindas */
-.welcome-quote {
-    text-align: center;
-    font-size: 1.6em;
-    margin: 20px 0; /* Margem para espaçamento */
-}
-
-/* Títulos de seções */
-.section-title {
-    font-size: 1.5em;
-    text-align: center;
-    margin: 10px 0;
-    position: relative;
-    color: var(--dark-color);
-}
-
-.section-title::after {
-    content: "";
-    display: block;
-    width: 25%;
-    height: 3px;
-    background-color: var(--secondary-color);
-    margin: 10px auto;
-}
-
-/* Status do Rebanho */
-.status-container {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.status-item {
-    background-color: var(--white-color);
+    height: auto;
     border-radius: 10px;
-    padding: 20px;
-    width: 100%;
-    max-width: 300px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s; /* Adiciona sombra ao hover */
-}
-
-.status-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Aumenta a sombra ao passar o mouse */
-}
-
-/* Estilo do Formulário */
-.form-group {
-    margin-bottom: 15px; /* Espaçamento entre os grupos */
-}
-
-input[type="date"],
-input[type="number"],
-input[type="text"],
-textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box; /* Inclui padding e borda na largura total */
-}
-
-button {
-    background-color: var(--secondary-color);
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s; /* Efeitos de transição */
-}
-
-button:hover {
-    background-color: darken(var(--secondary-color), 10%); /* Cor de fundo ao passar o mouse */
-    transform: scale(1.05); /* Aumenta ligeiramente o botão ao passar o mouse */
-}
-
-/* Tabela de Produção */
-#productionTable {
-    width: 100%;
-    border-collapse: collapse; /* Remove espaçamento entre células */
-    margin-top: 20px;
-}
-
-#productionTable th,
-#productionTable td {
-    border: 1px solid #ddd; /* Borda para células */
-    padding: 8px;
-    text-align: center; /* Alinhamento central */
-}
-
-#productionTable th {
-    background-color: var(--secondary-color);
-    color: white; /* Cor do texto do cabeçalho */
-}
-
-.status-item img {
-    width: 60px;
-    margin-bottom: 8px;
-}
-
-.btn-container {
-    padding: 8px;
-    margin: 8px 0;
-}
-
-/* Modal (Fundo e Estilização Geral) */
-#modal-animal {
-    display: none; /* Esconde o modal inicialmente */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Fundo semitransparente */
-    z-index: 1000;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Conteúdo do Modal */
-.modal-conteudo {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    width: 90%; /* Responsivo */
-    max-width: 400px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    animation: scaleIn 0.3s ease; /* Animação suave ao abrir */
-    position: relative;
-}
-
-/* Botão de Fechar */
-.modal-conteudo .fechar {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 24px;
-    cursor: pointer;
-    color: #333;
-}
-
-/* Grupo de Formulários */
-.form-group {
     margin-bottom: 15px;
 }
 
-.form-group label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
+/* Estilo do menu lateral */
+#menu-lateral {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 200px;
+    height: 100%;
+    background-color: #333;
+    color: white;
+    display: none; /* Escondido por padrão */
+    padding-top: 20px;
 }
 
-.form-group input,
-.form-group select {
+/* Footer */
+footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #333;
+    color: white;
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-/* Animação do Modal */
-@keyframes scaleIn {
-    from {
-        transform: scale(0.7);
-        opacity: 0;
-    }
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
+    /* Removido o bottom: 0 para evitar problemas */
 }
