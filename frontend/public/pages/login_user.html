@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+</head>
+<body>
+  <h1>Login</h1>
+  <form id="login-form">
+    <input type="text" id="username" placeholder="Username" required />
+    <input type="password" id="password" placeholder="Senha" required />
+    <button type="submit">Entrar</button>
+  </form>
+
+  <script>
+    document.getElementById('login-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    // Limpar qualquer dado antigo no localStorage antes de salvar novos
+    localStorage.removeItem('token');
+    localStorage.removeItem('userId');
+
+    // Realizar a requisição de login
+    const response = await fetch('/api/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username, password })
+    });
+
+    const data = await response.json();
+    if (data.token) {
+      // Supondo que o ID do produtor venha na resposta junto com o token
+      const producerId = data.userId;  // Captura o userId da resposta da API
+
+      // Verifique se o userId existe
+      if (producerId) {
+        // Armazenar o novo token e o ID do produtor no localStorage
+        localStorage.setItem('token', data.token); 
+        localStorage.setItem('userId', producerId); 
+
+        // Redirecionar para a página do rebanho
+        window.location.href = 'rebanho.html'; 
+      } else {
+        alert('Erro ao obter o ID do produtor');
+      }
+    } else {
+      alert('Login falhou');
+    }
+  });
+
+  </script>
+</body>
+</html>

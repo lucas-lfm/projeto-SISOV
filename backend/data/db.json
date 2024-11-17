@@ -197,6 +197,12 @@
           }
         }
       ]
+    },
+    {
+      "id": 4,
+      "username": "produtor10",
+      "password": "senha123",
+      "animais": []
     }
   ]
 }

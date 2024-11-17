@@ -1,25 +1,33 @@
-// backend/server.js
 const express = require('express');
 const path = require('path');
+const cors = require('cors');
 const bodyParser = require('body-parser');
-const userRoutes = require('./routes/userRoutes'); // Importando as rotas de usuário
+const authRoutes = require('./routes/authRoutes');
+const userRoutes = require('./routes/userRoutes');
+const animalRoutes = require('./routes/animalRoutes');
+
 
 const app = express();
 
 // Middleware
-app.use(bodyParser.json()); // Para entender JSON no corpo das requisições
-app.use(express.static(path.join(__dirname, '../frontend/public'))); // Servir arquivos estáticos do frontend
+app.use(cors());
+app.use(bodyParser.json());
 
-// Rota para servir o arquivo 'index.html'
+// Servir arquivos estáticos (exemplo: index.html e outros recursos do frontend)
+app.use(express.static(path.join(__dirname, '../frontend/public')));
+
+// Rota para servir o arquivo 'index.html' na raiz
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/public/index.html'));
 });
 
-// Usando as rotas de usuário com prefixo '/api'
-app.use('/api', userRoutes);
+// Definindo as rotas de API
+app.use('/api/auth', authRoutes);   // Rota de autenticação
+app.use('/api/usuarios', userRoutes);  // Rota de usuários
+app.use('/api/animais', animalRoutes);   // Rota de animais
 
-// Porta do servidor
+// Servir QR Codes gerados
+app.use('/qrcodes', express.static(path.join(__dirname, './qrcodes')));
+
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Servidor rodando na porta ${PORT}`);
-});
+app.listen(PORT, '0.0.0.0', () => console.log(`Servidor rodando na porta ${PORT}`));

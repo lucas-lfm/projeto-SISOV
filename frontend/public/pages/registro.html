@@ -25,6 +25,41 @@
         <p>Já possui uma conta? <a href="../index.html#login">Faça login aqui</a></p>
     </div>
 
-    <script src="../js/script.js"></script>
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
+          event.preventDefault();
+      
+          const username = document.getElementById('newUsername').value;
+          const password = document.getElementById('newPassword').value;
+      
+          // Verificar se os campos não estão vazios
+          if (!username || !password) {
+            alert('Por favor, preencha todos os campos.');
+            return;
+          }
+      
+          // Enviar os dados para o backend
+          fetch('http://localhost:3000/api/auth/register', {  // Verifique o caminho
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ username, password })
+            })
+          .then(response => response.json())
+          .then(data => {
+            if (data.message === 'Usuário registrado com sucesso!') {
+              alert('Cadastro realizado com sucesso!');
+              window.location.href = '../index.html#login'; // Redireciona para a página de login
+            } else {
+              alert('Erro ao cadastrar: ' + data.message);
+            }
+          })
+          .catch(error => {
+            console.error('Erro ao enviar o cadastro:', error);
+            alert('Erro ao tentar se cadastrar.');
+          });
+        });
+      </script>      
 </body>
 </html>
