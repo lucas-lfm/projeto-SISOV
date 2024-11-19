@@ -29,5 +29,5 @@ app.use('/api/animais', animalRoutes);   // Rota de animais
 app.use('/qrcodes', express.static(path.join(__dirname, './qrcodes')));
 
 // Iniciar o servidor na porta 80
-const PORT = 8080; // Alterado para 80 para que o redirecionamento funcione sem precisar de porta
+const PORT = process.env.PORT || 8080; // Alterado para 80 para que o redirecionamento funcione sem precisar de porta
 app.listen(PORT, '0.0.0.0', () => console.log(`Servidor rodando na porta ${PORT}`));

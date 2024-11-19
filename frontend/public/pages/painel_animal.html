@@ -81,6 +81,8 @@
         </div>
     </div>
 
+    <script src="./../js/config.js"></script>
+
     <script>
         // Função para carregar os dados do animal
         async function carregarAnimal() {
@@ -95,7 +97,7 @@
             }
 
             try {
-                const response = await fetch(`/api/animais/${idProdutor}/animais/${idAnimal}`, {
+                const response = await fetch(`${BASE_URL}/api/animais/${idProdutor}/animais/${idAnimal}`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
@@ -149,7 +151,7 @@
 
 
             try {
-                const response = await fetch(`/api/animais/${idProdutor}/animais/${idAnimal}`, {
+                const response = await fetch(`${BASE_URL}/api/animais/${idProdutor}/animais/${idAnimal}`, {
                     method: 'PATCH',
                     headers: {
                         'Content-Type': 'application/json',
@@ -180,7 +182,7 @@
             }
 
             try {
-                const response = await fetch(`/api/animais/${idProdutor}/animais/${idAnimal}/qrcode`, {
+                const response = await fetch(`${BASE_URL}/api/animais/${idProdutor}/animais/${idAnimal}/qrcode`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },

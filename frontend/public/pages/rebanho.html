@@ -74,6 +74,8 @@
         <p>&copy; 2024 SISOV - Sistema de Rastreamento de Ovinos. Todos os direitos reservados.</p>
     </footer>
 
+    <script src="./../js/config.js"></script>
+
     <script>
         function mostrarModal() {
             document.getElementById('modal-animal').style.display = 'block';
@@ -112,7 +114,7 @@
             }
         
             try {
-                const response = await fetch(`/api/animais/${idProdutor}/animais`, {
+                const response = await fetch(`${BASE_URL}/api/animais/${idProdutor}/animais`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
@@ -199,7 +201,7 @@
             };
 
             try {
-                const response = await fetch(`/api/animais/${idProdutor}/animais`, {
+                const response = await fetch(`${BASE_URL}/api/animais/${idProdutor}/animais`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

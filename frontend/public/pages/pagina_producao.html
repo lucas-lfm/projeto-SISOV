@@ -147,6 +147,8 @@
         <p>&copy; 2024 SISOV - Sistema de Rastreamento de Ovinos. Todos os direitos reservados.</p>
     </footer>
 
+    <script src="./../js/config.js"></script>
+
     <script>
         document.addEventListener('DOMContentLoaded', (event) => {
             loadUserData();  // Carrega os dados do usuário após o carregamento do DOM
@@ -164,7 +166,7 @@
             }
 
             try {
-                const response = await fetch(`http://192.168.1.234:8080/api/usuarios/${userId}`, {
+                const response = await fetch(`${BASE_URL}/api/usuarios/${userId}`, {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${token}`

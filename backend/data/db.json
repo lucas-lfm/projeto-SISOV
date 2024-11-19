@@ -202,6 +202,24 @@
           }
         }
       ]
+    },
+    {
+      "id": 4,
+      "username": "lucas_mendes",
+      "password": "1234567",
+      "animais": []
+    },
+    {
+      "id": 5,
+      "username": "lucas_mendes2",
+      "password": "1234567",
+      "animais": []
+    },
+    {
+      "id": 6,
+      "username": "teste",
+      "password": "1234567",
+      "animais": []
     }
   ]
 }

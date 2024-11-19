@@ -25,6 +25,8 @@
         <p>Já possui uma conta? <a href="../index.html#login">Faça login aqui</a></p>
     </div>
 
+    <script src="./../js/config.js"></script>
+
     <script>
         document.getElementById('registerForm').addEventListener('submit', function(event) {
           event.preventDefault();
@@ -39,7 +41,7 @@
           }
       
           // Enviar os dados para o backend
-          fetch('http://192.168.1.234:8080/api/auth/register', {  // Verifique o caminho
+          fetch(`${BASE_URL}/api/auth/register`, {  // Verifique o caminho
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
