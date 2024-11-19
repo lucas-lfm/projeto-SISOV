@@ -22,7 +22,7 @@
         <button class="menu-fechar" onclick="toggleMenu()">×</button>
         <h2>Painel de Ferramentas</h2>
         <ul>
-            <li><img src="../imgs/fazendeiro.png" alt="Fazendeiro"/><a href="produtor.html">Informações do Produtor</a></li>
+            <li><img src="../imgs/fazendeiro.png" alt="Fazendeiro"/><a href="Nnencontrado.html">Informações do Produtor</a></li>
             <li><img src="../imgs/propriedade.png" alt="Propriedade"/><a href="propriedade.html">Identificação da Propriedade</a></li>
             <li><img src="../imgs/rebanho.png" alt="Rebanho"/><a href="rebanho.html">Dados do Rebanho</a></li>
             <li><img src="../imgs/medkit_vacina.png" alt="Vacinação"/><a href="saude.html">Histórico de Saúde e Manejo</a></li>
@@ -38,7 +38,7 @@
     </nav>
 
     <main>
-        <h1 class="welcome-quote">Bem-Vindo(a), João Silva!<span class="welcome-quote-user-name"></span>!</h1>
+        <h1 class="welcome-quote">Bem-Vindo(a), <span id="user-name" class="welcome-quote-user-name"></span>!</h1>
 
         <section class="status-rebanho">
             <h2 class="section-title">Status do Rebanho</h2>
@@ -147,43 +147,89 @@
         <p>&copy; 2024 SISOV - Sistema de Rastreamento de Ovinos. Todos os direitos reservados.</p>
     </footer>
 
-    <!--
     <script>
-        // Defina seu IP local manualmente (ou utilize a função de obter IP que você pode ter)
-        // Arquivo config.js
-        var localIpAddress = '192.168.0.13'; // Substitua pelo IP correto
+        document.addEventListener('DOMContentLoaded', (event) => {
+            loadUserData();  // Carrega os dados do usuário após o carregamento do DOM
+        });
 
-        // Use esse IP para suas requisições
-        // Atualize as chamadas para localIPAddress
-        fetch(`http://${localIpAddress}:3001/usuarios/` + localStorage.getItem('userId'))
-            .then(response => response.json())
-            .then(data => {
-                var nome_usuario = data.informacoes_produtor.nome;
-                document.getElementsByClassName('welcome-quote-user-name')[0].textContent = nome_usuario;
-            })
-            .catch(error => console.error('Erro ao buscar os dados:', error));
+        // Função para carregar os dados do usuário conectado
+        async function loadUserData() {
+            const userId = localStorage.getItem('userId');
+            const token = localStorage.getItem('token');
 
-        fetch(`http://${localIpAddress}:3001/usuarios/` + localStorage.getItem('userId'))
-            .then(response => response.json())
-            .then(data => {
-                const totalOvinos = data.animais.length;
-                document.getElementById('total-ovinos').textContent = totalOvinos;
+            if (!userId || !token) {
+                alert("Você não está logado.");
+                window.location.href = 'login.html'; // Redireciona para a página de login
+                return;
+            }
 
-                const saudaveis = data.animais.filter(animal => animal.historico_saude.historico_doencas === "Nenhuma doença registrada").length;
-                const percentualSaudaveis = ((saudaveis / totalOvinos) * 100).toFixed(2);
-                document.getElementById('saude-geral').textContent = `${percentualSaudaveis}% saudáveis`;
+            try {
+                const response = await fetch(`http://192.168.1.157:8080/api/usuarios/${userId}`, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
 
-                const vacinacoes = data.animais.map(animal => animal.historico_saude.vacinacoes);
-                const ultimaVacinacao = vacinacoes.length > 0 ? vacinacoes[0] : "Nunca vacinado";
-                document.getElementById('ultima-vacinacao').textContent = ultimaVacinacao;
-            })
-            .catch(error => console.error('Erro ao buscar os dados:', error));
+                if (!response.ok) {
+                    throw new Error("Erro ao obter os dados do usuário.");
+                }
 
-    </script>
-    -->
-        
+                const userData = await response.json();
 
-    <script>
+                // Verifique se informacoes_produtor existe antes de tentar acessá-lo
+                const userNameElement = document.getElementById('user-name');
+                
+                userNameElement.textContent = userData.username;
+
+                // Chama a função para atualizar o status do rebanho
+                updateRebanhoStatus(userData);
+            } catch (error) {
+                console.error("Erro ao carregar os dados do usuário:", error);
+                alert("Erro ao carregar os dados.");
+            }
+        }
+
+        // Função para atualizar o status do rebanho
+        function updateRebanhoStatus(userData) {
+            const totalOvinos = userData.animais ? userData.animais.length : 0;  // Verifique se 'animais' existe
+            const totalOvinosElement = document.getElementById('total-ovinos');
+            
+            if (totalOvinosElement) {
+                totalOvinosElement.textContent = totalOvinos;
+            } else {
+                console.error("Erro: 'total-ovinos' não encontrado.");
+            }
+
+            if (totalOvinos > 0 && userData.animais[0].historico_saude) {
+                const saudeGeral = userData.animais[0].historico_saude.vacinacoes ? "97% saudáveis" : "Saúde desconhecida";
+                const saudeElement = document.getElementById('saude-geral');
+                if (saudeElement) {
+                    saudeElement.textContent = saudeGeral;
+                } else {
+                    console.error("Erro: 'saude-geral' não encontrado.");
+                }
+
+                const ultimaVacinacao = userData.animais[0].historico_saude.vacinacoes || "Nenhuma vacinação";
+                const ultimaVacinacaoElement = document.getElementById('ultima-vacinacao');
+                if (ultimaVacinacaoElement) {
+                    ultimaVacinacaoElement.textContent = ultimaVacinacao;
+                } else {
+                    console.error("Erro: 'ultima-vacinacao' não encontrado.");
+                }
+            } else {
+                // Se o usuário não tiver animais, exiba uma mensagem padrão
+                const saudeElement = document.getElementById('saude-geral');
+                if (saudeElement) {
+                    saudeElement.textContent = "Nenhum animal cadastrado";
+                }
+                const ultimaVacinacaoElement = document.getElementById('ultima-vacinacao');
+                if (ultimaVacinacaoElement) {
+                    ultimaVacinacaoElement.textContent = "Nenhuma vacinação";
+                }
+            }
+        }
+
         // Função para registrar a produção
         function handleProduction(event) {
             event.preventDefault(); // Previne o envio do formulário
@@ -235,6 +281,7 @@
         function manageHerd() {
             window.location.href = "rebanho.html"; // Navega para a página de gerenciamento do rebanho
         }
+
     </script>
 </body>
 </html>

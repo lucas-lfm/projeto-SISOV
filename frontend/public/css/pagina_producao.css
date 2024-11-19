@@ -162,12 +162,16 @@ button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s; /* Efeitos de transição */
+    transition: background-color 0.3s, transform 0.3s;
+    margin-top: 18px; /* Efeitos de transição */
 }
 
 button:hover {
     background-color: darken(var(--secondary-color), 10%); /* Cor de fundo ao passar o mouse */
-    transform: scale(1.05); /* Aumenta ligeiramente o botão ao passar o mouse */
+    transform: scale(1.05);
+    color: #2c3e50;
+    border: 2px solid #2c3e50;
+    border-radius:2px solid #2c3e50; /* Aumenta ligeiramente o botão ao passar o mouse */
 }
 
 #productionForm {

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SISOV - Sistema de Rastreabilidade de Ovinos</title>
+    <title>SISOV - Sistema de Rastreabilidade para Ovinos</title>
     <link rel="stylesheet" href="./css/home.css">
 </head>
 
@@ -16,7 +16,7 @@
         <div class="container">
             <div>
                 <h1>SISOV</h1>
-                <p>Sistema de Rastreamento de Ovinos</p>
+                <p>Sistema de Rastreamento para Ovinos</p>
             </div>
             <nav>
                 <ul>
@@ -24,7 +24,7 @@
                     <li><a href="#about">Sobre</a></li>
                     <li><a href="#contact">Contato</a></li>
                     <!-- <li><a href="javascript:void(0)" onclick="showLogin()" id="login-btn">Entrar</a></li> -->
-                    <li><a href="./pages/login_user.html" onclick="showLogin()" id="login-btn">Entrar</a></li>
+                    <li><a href="./pages/login_user.html" id="login-btn">Entrar</a></li>
                     <li><a href="./pages/registro.html" id="cadastro-btn">Cadastrar</a></li>
                 </ul>
             </nav>
@@ -35,7 +35,7 @@
         <section id="highlight" class="highlight">
             <div class="container">
                 <div>
-                    <img src="imgs/aa-removebg-preview.webp" alt="">
+                    <img class="img-logo-home" src="imgs/logo_sisov-removebg-preview.png" alt="">
                     <h2>A força da produção está em suas mãos!</h2>
                     <p>Rastreando a produção com responsabilidade e informação para todos.</p>
 
@@ -47,8 +47,8 @@
         <section id="home">
             <div class="container">
                 <h2>Bem-vindo ao SISOV</h2>
-                <p>O Sistema de Rastreabilidade de Ovinos no Ceará, garantindo qualidade e procedência da carne.</p>
-                <a href="../public/pages/pagina_producao.html">
+                <p>O Sistema de Rastreabilidade para Ovinos no Ceará, garantindo qualidade e procedência da carne.</p>
+                <a href="./pages/emDev.html"">
                     <button onclick="showLogin()">Acesse o Sistema</button>
                 </a>
             </div>
@@ -57,17 +57,15 @@
         <section id="login" class="hidden">
             <div class="container">
                 <h2 class="line-l1">Login</h2>
-                <form id="loginForm">
-                    <label for="Formlogin_username">Nome de Usuário:</label>
-                    <input type="text" id="Formlogin_username" placeholder="Digite seu nome de usuário">
-            
-                    <label for="Formlogin_password">Senha:</label>
-                    <input type="password" id="Formlogin_password" placeholder="Digite sua senha">
-            
-                </form>           
-                <a href="../public/pages/pagina_producao.html">
-                    <button>Entrar</button>
-                </a>
+                <form id="login-form"> <!-- ID alterado para 'login-form' -->
+                    <label for="username">Nome de Usuário:</label> <!-- 'for' correspondente ao 'id' -->
+                    <input type="text" id="username" placeholder="Digite seu nome de usuário"> <!-- ID atualizado para 'username' -->
+        
+                    <label for="password">Senha:</label> <!-- 'for' correspondente ao 'id' -->
+                    <input type="password" id="password" placeholder="Digite sua senha"> <!-- ID atualizado para 'password' -->
+        
+                    <button type="submit">Entrar</button> <!-- Botão acionará o evento 'submit' -->
+                </form>
             </div>
         </section>
 
@@ -76,7 +74,7 @@
                 <div class="about-content">
                     <div class="text-content">
                         <h2 class="line-l1">Sobre o SISOV</h2>
-                        <p>O SISOV (Sistema de Rastreabilidade de Ovinos) é uma plataforma dedicada ao rastreamento e à gestão de informações sobre a carne de ovinos. Seu principal objetivo é garantir a conformidade com as normas de Identidade Geográfica (IG), proporcionando uma rastreabilidade completa e confiável.</p>
+                        <p>O SISOV (Sistema de Rastreabilidade para Ovinos) é uma plataforma dedicada ao rastreamento e à gestão de informações sobre a carne de ovinos. Seu principal objetivo é garantir a conformidade com as normas de Identidade Geográfica (IG), proporcionando uma rastreabilidade completa e confiável.</p>
                         
                         <h3>Por que o SISOV é importante?</h3>
                         <p>A rastreabilidade da carne de ovinos é crucial para assegurar a qualidade e a segurança alimentar. O SISOV permite que produtores e consumidores validem informações sobre a origem da carne, aumentando a transparência e a confiança no produto. Com isso, buscamos promover práticas sustentáveis e responsáveis na produção de carne.</p>
@@ -179,5 +177,7 @@
         });
     </script>
     -->
+
+    <script src="./js/functions.js"></script>
 </body>
 </html>

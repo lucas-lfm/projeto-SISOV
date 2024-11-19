@@ -35,21 +35,27 @@ const getAnimalsByProducerId = (req, res) => {
 // Função para obter um animal específico de um produtor
 const getAnimalById = (req, res) => {
   const idProdutor = parseInt(req.params.idProdutor, 10);
-  const idAnimal = req.params.idAnimal; 
+  const idAnimal = req.params.idAnimal;
   const usuarios = readData();
+
+  console.log('ID do Produtor:', idProdutor);
+  console.log('ID do Animal:', idAnimal);
 
   const produtor = usuarios.find(usuario => usuario.id === idProdutor);
   if (!produtor) {
+    console.log('Produtor não encontrado');
     return res.status(404).json({ mensagem: 'Produtor não encontrado' });
   }
 
   const animal = produtor.animais.find(animal => animal.identificacao_animal === idAnimal);
   if (!animal) {
+    console.log('Animal não encontrado');
     return res.status(404).json({ mensagem: 'Animal não encontrado' });
   }
 
   res.json(animal);
 };
+
 
 // Função para gerar QRCode para um animal
 const gerarQRCode = async (req, res) => {
@@ -77,7 +83,7 @@ const gerarQRCode = async (req, res) => {
   console.log('Produtor ID encontrado:', produtorId); // Verificando o ID do produtor
 
   // Construir a URL para o painel do animal
-  const urlAnimal = `http://localhost:3000/api/${produtorId}/animais/${animal.identificacao_animal}`;
+  const urlAnimal = `http://localhost:8080/api/${produtorId}/animais/${animal.identificacao_animal}`;
 
   try {
     // Gerar o QRCode em formato Base64
@@ -151,10 +157,51 @@ const adicionarAnimal = (req, res) => {
   }
 };
 
+const atualizarAnimal = (req, res) => {
+  const { idProdutor, idAnimal } = req.params;
+  const { nome_animal, sexo, raca, data_nascimento, codigo_rastreamento, procedencia, historico_saude, outras_informacoes } = req.body;
+
+  const usuarios = readData();
+
+  // Encontra o produtor pelo id
+  const produtor = usuarios.find(usuario => usuario.id === parseInt(idProdutor, 10));
+  if (!produtor) {
+    return res.status(404).json({ mensagem: 'Produtor não encontrado.' });
+  }
+
+  // Encontra o animal pelo id dentro do produtor
+  const animal = produtor.animais.find(animal => animal.identificacao_animal === idAnimal);
+  if (!animal) {
+    return res.status(404).json({ mensagem: 'Animal não encontrado.' });
+  }
+
+  // Atualiza os dados do animal com as informações recebidas, se presentes
+  animal.nome_animal = nome_animal || animal.nome_animal;
+  animal.sexo = sexo || animal.sexo;
+  animal.raca = raca || animal.raca;
+  animal.data_nascimento = data_nascimento || animal.data_nascimento;
+  animal.codigo_rastreamento = codigo_rastreamento || animal.codigo_rastreamento;
+  animal.procedencia = procedencia || animal.procedencia;
+  animal.historico_saude = historico_saude || animal.historico_saude;
+  animal.outras_informacoes = outras_informacoes || animal.outras_informacoes;
+
+  // Salva os dados atualizados no db.json
+  try {
+    const dataPath = path.join(__dirname, '../data/db.json');
+    fs.writeFileSync(dataPath, JSON.stringify({ usuarios }, null, 2), 'utf8');
+    res.status(200).json({ mensagem: 'Animal atualizado com sucesso.', animal });
+  } catch (error) {
+    console.error('Erro ao salvar o arquivo db.json:', error.message);
+    res.status(500).json({ mensagem: 'Erro ao salvar os dados atualizados do animal.' });
+  }
+};
+
+
 module.exports = {
   getAnimalsByProducerId,
   getAnimalById,
   gerarQRCode,
   obterAnimal,
   adicionarAnimal,
+  atualizarAnimal, // Certifique-se de que a função 'atualizarAnimal' está sendo exportada corretamente
 };

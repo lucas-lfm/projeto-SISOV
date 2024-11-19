@@ -261,6 +261,11 @@ body {
     font-size: 24px;
 }
 
+.img-logo-home {
+    margin: -10px;
+    width: 450px;
+}
+
 .highlight-image {
     width: 400px; /* Largura da imagem */
     height: 400px; /* Altura igual à largura para manter a forma circular */

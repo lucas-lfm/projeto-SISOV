@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Em Desenvolvimento</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #0b82eb, #00f2fe);
+            font-family: Arial, sans-serif;
+            color: #fff;
+        }
+        .container {
+            text-align: center;
+            animation: fadeIn 2s ease-in-out;
+        }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+        .small-text {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.87);
+            margin-top: 15px;
+        }
+        button {
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid #fff;
+            color: #fff;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            background: #fff;
+            color: #00f2fe;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Estamos Trabalhando!</h1>
+        <p>O site ainda está em desenvolvimento, mas estamos ansiosos para compartilhar com você em breve.</p>
+        <button onclick="goBack()">Voltar</button>
+        <p class="small-text">Obrigado pela paciência enquanto ajustamos tudo para você!</p>
+    </div>
+
+    <script>
+        function goBack() {
+            window.history.back(); // Volta para a página anterior
+        }
+    </script>
+</body>
+</html>

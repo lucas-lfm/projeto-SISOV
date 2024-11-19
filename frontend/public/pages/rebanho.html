@@ -144,11 +144,17 @@
         }
 
         // Função para adicionar um animal diretamente no DOM
+        // Função para adicionar um animal diretamente no DOM
+        // Função para adicionar um animal diretamente no DOM
         function adicionarAnimalNaTela(animal) {
             const container = document.querySelector('.card-container');
             
             const card = document.createElement('div');
             card.classList.add('card');
+            
+            // A URL para o painel do animal será dinâmica
+            const animalUrl = `painel_animal.html?id=${animal.identificacao_animal}`;
+            
             card.innerHTML = `
                 <h3>${animal.nome_animal}</h3>
                 <img src="${animal.foto || 'default-animal.jpg'}" alt="Foto de ${animal.nome_animal}" class="animal-img"/>
@@ -157,8 +163,18 @@
                 <p>Raça: ${animal.raca}</p>
                 <p>Data de Nascimento: ${animal.data_nascimento}</p>
             `;
+            
+            // Adiciona o evento de clique para redirecionar ao painel do animal
+            card.addEventListener('click', () => {
+                // Armazenar o ID do animal no localStorage
+                localStorage.setItem('animalId', animal.identificacao_animal);
+                window.location.href = animalUrl; // Redireciona para o painel do animal
+            });
+
             container.appendChild(card);
         }
+
+
 
         // Função para salvar o novo animal
         document.getElementById('form-animal').addEventListener('submit', async (e) => {

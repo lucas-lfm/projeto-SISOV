@@ -6,7 +6,6 @@ const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
 const animalRoutes = require('./routes/animalRoutes');
 
-
 const app = express();
 
 // Middleware
@@ -16,9 +15,9 @@ app.use(bodyParser.json());
 // Servir arquivos estáticos (exemplo: index.html e outros recursos do frontend)
 app.use(express.static(path.join(__dirname, '../frontend/public')));
 
-// Rota para servir o arquivo 'index.html' na raiz
+// Redirecionar para a porta 3000
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend/public/index.html'));
+    res.redirect('http://sisov.local:8080');
 });
 
 // Definindo as rotas de API
@@ -29,5 +28,6 @@ app.use('/api/animais', animalRoutes);   // Rota de animais
 // Servir QR Codes gerados
 app.use('/qrcodes', express.static(path.join(__dirname, './qrcodes')));
 
-const PORT = process.env.PORT || 3000;
+// Iniciar o servidor na porta 80
+const PORT = 8080; // Alterado para 80 para que o redirecionamento funcione sem precisar de porta
 app.listen(PORT, '0.0.0.0', () => console.log(`Servidor rodando na porta ${PORT}`));

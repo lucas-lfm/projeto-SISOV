@@ -2,8 +2,8 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Login</title>
-  <link rel="stylesheet" href="/frontend/public/css/login_user.css">
+  <title>SISOV - Login</title>
+  <link rel="stylesheet" href="../css/login_user.css">
 </head>
 <body>
   <h1>Login</h1>
@@ -42,8 +42,8 @@
         localStorage.setItem('token', data.token); 
         localStorage.setItem('userId', producerId); 
 
-        // Redirecionar para a página do rebanho
-        window.location.href = 'rebanho.html'; 
+        // Redirecionar para a página de produção
+        window.location.href = 'pagina_producao.html'; 
       } else {
         alert('Erro ao obter o ID do produtor');
       }

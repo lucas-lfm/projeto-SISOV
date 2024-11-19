@@ -5,129 +5,134 @@
       "username": "produtor1",
       "password": "senha123",
       "informacoes_produtor": {
-        "nome": "João Silva",
-        "endereco": "Rua das Flores, 123, Tauá, CE",
-        "registro": "123456",
-        "contato": "(88) 98888-9999"
+        "nome": "André Souza",
+        "endereco": "Rua das Acácias, 345, Tauá, CE",
+        "registro": "112233",
+        "contato": "(88) 91234-5678"
       },
       "identificacao_propriedade": {
-        "nome": "Fazenda São Pedro",
+        "nome": "Fazenda Pé do Morro",
         "localizacao": "Zona Rural, Tauá, CE",
-        "registro": "REG-001",
+        "registro": "REG-005",
         "tipo_uso": "Produção de Carne"
       },
       "animais": [
         {
-          "nome_animal": "Rex",
-          "identificacao_animal": "OV001",
-          "sexo": "macho",
-          "raca": "Dorper",
-          "data_nascimento": "2022-03-15",
-          "codigo_rastreamento": "TRK-001",
-          "procedencia": "Rebanho do Estado",
-          "foto": "public/frontend/img/João Silva/animal_img_icon/rex.jpg",
-          "historico_saude": {
-            "vacinacoes": "Vacina contra brucelose em 01/06/2023",
-            "tratamentos_veterinarios": "Tratamento contra verminose em 15/07/2023",
-            "historico_doencas": "Nenhuma doença registrada",
-            "exames_laboratoriais": "Exame de sangue realizado em 01/08/2023"
-          },
+          "nome_animal": "Ovelha A",
+          "identificacao_animal": "OV005",
+          "sexo": "fêmea",
+          "raca": "Dorset",
+          "data_nascimento": "2022-08-10",
+          "codigo_rastreamento": "TRK-010",
+          "procedencia": "Rebanho Local",
+          "foto": "public/frontend/img/André Souza/animal_img_icon/ovelha_a.jpg",
+          "historico_saude": "Atualizado: Nenhuma doença recente",
           "alimentacao": {
             "tipo_alimentacao": "Ração e pasto",
-            "fornecedor": "Fornecedor A",
-            "registro_suplementos": "Suplemento A: 1 vez ao dia"
+            "fornecedor": "Fornecedor C",
+            "registro_suplementos": "Suplemento C: 1 vez ao dia"
           },
           "movimentacao": {
-            "entradas_saidas": "Entrada em 01/03/2022",
-            "data_movimentacao": "2023-10-01",
-            "origem_destino": "Fazenda São Pedro para Mercado Local",
+            "entradas_saidas": "Entrada em 01/07/2022",
+            "data_movimentacao": "2023-10-15",
+            "origem_destino": "Fazenda Pé do Morro para Mercado Local",
             "transporte": "Caminhão"
           },
           "reproducao": {
-            "inseminacao": "Inseminação realizada em 25/09/2023",
-            "dados_gestacao": "Gestação prevista para 25/10/2023",
-            "registro_partos": "Parto previsto para 20/02/2024"
+            "inseminacao": "Inseminação realizada em 15/09/2023",
+            "dados_gestacao": "Gestação prevista para 15/10/2023",
+            "registro_partos": "Parto previsto para 10/02/2024"
           },
           "rastreabilidade": {
-            "codigo_sisov": "SISOV-001",
+            "codigo_sisov": "SISOV-010",
             "certificacao_ig": "Certificado em 01/12/2023",
-            "auditorias_inspecoes": "Auditoria realizada em 01/10/2023"
+            "auditorias_inspecoes": "Auditoria realizada em 01/11/2023"
           },
           "producao_carne": {
-            "registro_abate": "Abate previsto para 01/01/2024",
+            "registro_abate": "Abate previsto para 01/02/2024",
             "destino_carne": "Mercado Local",
-            "controle_qualidade": "Controle de qualidade em 15/12/2023"
+            "controle_qualidade": "Controle de qualidade em 10/12/2023"
           },
           "documentacao_legal": {
             "certificados_sanidade": "Certificado de sanidade em 01/12/2023",
             "licencas": "Licença de funcionamento válida até 2025",
-            "relatorios_conformidade": "Relatório de conformidade enviado em 01/01/2024"
+            "relatorios_conformidade": "Relatório de conformidade enviado em 01/12/2023"
           }
+        },
+        {
+          "nome_animal": "Ovelha B",
+          "identificacao_animal": "OV006",
+          "sexo": "fêmea",
+          "raca": "Dorset",
+          "data_nascimento": "2022-07-25",
+          "foto": "default-animal.jpg",
+          "codigo_rastreamento": "Não Definido",
+          "procedencia": "Rebanho Local"
         }
       ]
     },
     {
       "id": 2,
       "username": "produtor2",
-      "password": "senha789",
+      "password": "senha123",
       "informacoes_produtor": {
-        "nome": "Maria Oliveira",
-        "endereco": "Avenida Central, 456, Tauá, CE",
-        "registro": "654321",
-        "contato": "(88) 95555-4444"
+        "nome": "Cláudia Pereira",
+        "endereco": "Avenida Brasil, 678, Tauá, CE",
+        "registro": "445566",
+        "contato": "(88) 92345-6789"
       },
       "identificacao_propriedade": {
-        "nome": "Fazenda Nova Esperança",
+        "nome": "Fazenda Boa Sorte",
         "localizacao": "Zona Rural, Tauá, CE",
-        "registro": "REG-002",
+        "registro": "REG-006",
         "tipo_uso": "Produção de Carne"
       },
       "animais": [
         {
-          "nome_animal": "Luna",
-          "identificacao_animal": "OV002",
+          "nome_animal": "Ovelha C",
+          "identificacao_animal": "OV007",
           "sexo": "fêmea",
-          "raca": "Santa Inês",
-          "data_nascimento": "2022-05-20",
-          "codigo_rastreamento": "TRK-002",
+          "raca": "Dorper",
+          "data_nascimento": "2023-01-12",
+          "codigo_rastreamento": "TRK-011",
           "procedencia": "Rebanho do Estado",
-          "foto": "public/frontend/img/Maria Oliveira/animal_img_icon/luna.jpg",
+          "foto": "public/frontend/img/Cláudia Pereira/animal_img_icon/ovelha_c.jpg",
           "historico_saude": {
             "vacinacoes": "Vacina contra brucelose em 01/06/2023",
-            "tratamentos_veterinarios": "Tratamento contra verminose em 15/07/2023",
+            "tratamentos_veterinarios": "Tratamento contra verminose em 01/08/2023",
             "historico_doencas": "Nenhuma doença registrada",
-            "exames_laboratoriais": "Exame de leite realizado em 01/08/2023"
+            "exames_laboratoriais": "Exame de leite realizado em 01/09/2023"
           },
           "alimentacao": {
             "tipo_alimentacao": "Silagem e pasto",
-            "fornecedor": "Fornecedor B",
-            "registro_suplementos": "Suplemento B: 2 vezes ao dia"
+            "fornecedor": "Fornecedor D",
+            "registro_suplementos": "Suplemento D: 2 vezes ao dia"
           },
           "movimentacao": {
-            "entradas_saidas": "Entrada em 01/05/2022",
-            "data_movimentacao": "2023-11-10",
-            "origem_destino": "Fazenda Nova Esperança para Mercado Local",
+            "entradas_saidas": "Entrada em 01/02/2023",
+            "data_movimentacao": "2023-10-12",
+            "origem_destino": "Fazenda Boa Sorte para Mercado Local",
             "transporte": "Caminhão"
           },
           "reproducao": {
-            "inseminacao": "Inseminação realizada em 25/10/2023",
-            "dados_gestacao": "Gestação prevista para 25/11/2023",
-            "registro_partos": "Parto previsto para 20/06/2024"
+            "inseminacao": "Inseminação realizada em 01/10/2023",
+            "dados_gestacao": "Gestação prevista para 01/11/2023",
+            "registro_partos": "Parto previsto para 01/04/2024"
           },
           "rastreabilidade": {
-            "codigo_sisov": "SISOV-002",
+            "codigo_sisov": "SISOV-011",
             "certificacao_ig": "Certificado em 01/12/2023",
-            "auditorias_inspecoes": "Auditoria realizada em 01/10/2023"
+            "auditorias_inspecoes": "Auditoria realizada em 01/11/2023"
           },
           "producao_carne": {
-            "registro_abate": "Abate previsto para 01/01/2024",
+            "registro_abate": "Abate previsto para 01/02/2024",
             "destino_carne": "Mercado Local",
-            "controle_qualidade": "Controle de qualidade em 15/12/2023"
+            "controle_qualidade": "Controle de qualidade em 10/01/2024"
           },
           "documentacao_legal": {
             "certificados_sanidade": "Certificado de sanidade em 01/12/2023",
             "licencas": "Licença de funcionamento válida até 2025",
-            "relatorios_conformidade": "Relatório de conformidade enviado em 01/01/2024"
+            "relatorios_conformidade": "Relatório de conformidade enviado em 01/12/2023"
           }
         }
       ]
@@ -135,74 +140,68 @@
     {
       "id": 3,
       "username": "produtor3",
-      "password": "senha91011",
+      "password": "senha123",
       "informacoes_produtor": {
-        "nome": "Carlos Almeida",
-        "endereco": "Rua dos Eucaliptos, 789, Tauá, CE",
-        "registro": "789012",
-        "contato": "(88) 97777-6666"
+        "nome": "Felipe Costa",
+        "endereco": "Rua das Palmeiras, 987, Tauá, CE",
+        "registro": "334455",
+        "contato": "(88) 93456-7890"
       },
       "identificacao_propriedade": {
-        "nome": "Fazenda Boa Vista",
+        "nome": "Fazenda Verde Vida",
         "localizacao": "Zona Rural, Tauá, CE",
-        "registro": "REG-003",
+        "registro": "REG-007",
         "tipo_uso": "Produção de Carne e Leite"
       },
       "animais": [
         {
-          "nome_animal": "Bela",
-          "identificacao_animal": "OV004",
+          "nome_animal": "Ovelha D",
+          "identificacao_animal": "OV008",
           "sexo": "fêmea",
           "raca": "Katahdin",
-          "data_nascimento": "2023-04-05",
-          "codigo_rastreamento": "TRK-004",
-          "procedencia": "Rebanho do Estado",
-          "foto": "public/frontend/img/Carlos Almeida/animal_img_icon/bela.jpg",
+          "data_nascimento": "2022-09-03",
+          "codigo_rastreamento": "TRK-012",
+          "procedencia": "Rebanho Local",
+          "foto": "public/frontend/img/Felipe Costa/animal_img_icon/ovelha_d.jpg",
           "historico_saude": {
             "vacinacoes": "Vacina contra brucelose em 01/06/2023",
-            "tratamentos_veterinarios": "Tratamento contra verminose em 15/07/2023",
+            "tratamentos_veterinarios": "Tratamento contra verminose em 01/08/2023",
             "historico_doencas": "Nenhuma doença registrada",
-            "exames_laboratoriais": "Exame de leite realizado em 01/08/2023"
+            "exames_laboratoriais": "Exame de leite realizado em 01/09/2023"
           },
           "alimentacao": {
             "tipo_alimentacao": "Silagem e pasto",
-            "fornecedor": "Fornecedor A",
+            "fornecedor": "Fornecedor E",
             "registro_suplementos": "Suplemento E: 2 vezes ao dia"
           },
           "movimentacao": {
-            "entradas_saidas": "Entrada em 01/04/2023",
-            "data_movimentacao": "2023-11-10",
-            "origem_destino": "Fazenda Boa Vista para Mercado Local",
+            "entradas_saidas": "Entrada em 01/10/2022",
+            "data_movimentacao": "2023-09-10",
+            "origem_destino": "Fazenda Verde Vida para Mercado Local",
             "transporte": "Caminhão"
           },
           "reproducao": {
-            "inseminacao": "Inseminação realizada em 01/05/2023",
-            "dados_gestacao": "Gestação prevista para 01/06/2024",
-            "registro_partos": "Parto previsto para 15/03/2025"
+            "inseminacao": "Inseminação realizada em 15/08/2023",
+            "dados_gestacao": "Gestação prevista para 15/09/2023",
+            "registro_partos": "Parto previsto para 01/02/2024"
           },
           "rastreabilidade": {
-            "codigo_sisov": "SISOV-003",
+            "codigo_sisov": "SISOV-012",
             "certificacao_ig": "Certificado em 01/12/2023",
-            "auditorias_inspecoes": "Auditoria realizada em 01/10/2023"
+            "auditorias_inspecoes": "Auditoria realizada em 01/11/2023"
           },
           "producao_carne": {
-            "registro_abate": "Abate previsto para 01/01/2024",
+            "registro_abate": "Abate previsto para 01/03/2024",
             "destino_carne": "Mercado Local",
-            "controle_qualidade": "Controle de qualidade em 15/12/2023"
+            "controle_qualidade": "Controle de qualidade em 10/01/2024"
           },
           "documentacao_legal": {
             "certificados_sanidade": "Certificado de sanidade em 01/12/2023",
             "licencas": "Licença de funcionamento válida até 2025",
-            "relatorios_conformidade": "Relatório de conformidade enviado em 01/01/2024"
+            "relatorios_conformidade": "Relatório de conformidade enviado em 01/12/2023"
           }
         }
       ]
-    },
-    {
-      "id": 4,
-      "username": "produtor10",
-      "password": "senha123",
-      "animais": []
     }
   ]
 }
