@@ -72,6 +72,12 @@
                     <button type="submit" id="salvar">Salvar</button>
                 </form>
             </div>
+            <!-- Exibição do QR Code -->
+            <div class="qrcode-container">
+                <h3>Escaneie o QR Code para acessar o painel do animal diretamente:</h3>
+                <img id="qrcode-img" src="" alt="QR Code" />
+            </div>
+
         </div>
     </div>
 
@@ -163,11 +169,55 @@
             }
         }
 
+        async function carregarQRCode() {
+            const token = localStorage.getItem('token');
+            const idAnimal = localStorage.getItem('animalId');
+            const idProdutor = localStorage.getItem('userId');
+
+            if (!token || !idAnimal || !idProdutor) {
+                console.error('Token, ID do animal ou ID do produtor não encontrados!');
+                return;
+            }
+
+            try {
+                const response = await fetch(`/api/animais/${idProdutor}/animais/${idAnimal}/qrcode`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+
+                if (!response.ok) {
+                    throw new Error('Erro ao gerar o QR Code');
+                }
+
+                const data = await response.json();
+                const qrcodeBase64 = data.qrCodeBase64;
+
+                // Exibe a imagem do QR Code no painel
+                const qrcodeImg = document.getElementById('qrcode-img');
+                qrcodeImg.src = qrcodeBase64;
+
+            } catch (error) {
+                console.error('Erro ao carregar o QR Code:', error);
+            }
+        }
+
+        // Carregar o QR Code ao abrir a página
+        window.onload = () => {
+            carregarAnimal();  // Carregar os dados do animal
+            carregarQRCode();  // Carregar o QR Code
+        };
+
+
+
         // Adiciona o evento de salvar ao formulário
         document.getElementById('form-animal').addEventListener('submit', salvarAnimal);
 
         // Carregar os dados ao abrir a página
-        window.onload = carregarAnimal;
+        window.onload = () => {
+            carregarAnimal();  // Carregar os dados do animal
+            carregarQRCode();  // Carregar o QR Code
+        };
 
     </script>
 </body>

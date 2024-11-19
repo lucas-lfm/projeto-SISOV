@@ -26,6 +26,7 @@ router.patch('/:idProdutor/animais/:idAnimal', autenticarToken, atualizarAnimal)
 
 
 // Rota para gerar QR Code para um animal (rota protegida)
-router.get('/:idProdutor/animais/:animalId/qrcode', autenticarToken, gerarQRCode); // Corrigido aqui
+router.get('/:idProdutor/animais/:animalId/qrcode', autenticarToken, gerarQRCode);
+// Corrigido aqui
 
 module.exports = router;

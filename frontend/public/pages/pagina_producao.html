@@ -22,17 +22,17 @@
         <button class="menu-fechar" onclick="toggleMenu()">×</button>
         <h2>Painel de Ferramentas</h2>
         <ul>
-            <li><img src="../imgs/fazendeiro.png" alt="Fazendeiro"/><a href="Nnencontrado.html">Informações do Produtor</a></li>
-            <li><img src="../imgs/propriedade.png" alt="Propriedade"/><a href="propriedade.html">Identificação da Propriedade</a></li>
-            <li><img src="../imgs/rebanho.png" alt="Rebanho"/><a href="rebanho.html">Dados do Rebanho</a></li>
-            <li><img src="../imgs/medkit_vacina.png" alt="Vacinação"/><a href="saude.html">Histórico de Saúde e Manejo</a></li>
-            <li><img src="../imgs/vegetais-comida.png" alt="Alimentação"/><a href="alimentacao.html">Alimentação e Suplementação</a></li>
-            <li><img src="../imgs/rebanho2.png" alt="Movimentação"/><a href="movimentacao.html">Movimentação dos Animais</a></li>
-            <li><img src="../imgs/reproducao.png" alt="Reprodução"/><a href="reproducao.html">Reprodução</a></li>
-            <li><img src="../imgs/rastreamento.png" alt="Rastreamento"/><a href="rastreamento.html">Rastreamento e Certificação</a></li>
-            <li><img src="../imgs/carne.png" alt="Produção de Carne"/><a href="carne.html">Produção de Carne</a></li>
-            <li><img src="../imgs/documentacao.png" alt="Documentação"/><a href="documentacao.html">Documentação Legal e Compliance</a></li>
-            <li><img src="../imgs/seguranca.png" alt="Segurança"/><a href="seguranca.html">Segurança e Controle de Acesso</a></li>
+            <li><img src="../imgs/fazendeiro.png" alt="Fazendeiro"/><a href="../pages/emDev.html">Informações do Produtor</a></li>
+            <li><img src="../imgs/propriedade.png" alt="Propriedade"/><a href="../pages/emDev.html">Identificação da Propriedade</a></li>
+            <li><img src="../imgs/rebanho.png" alt="Rebanho"/><a href="../pages/emDev.html">Dados do Rebanho</a></li>
+            <li><img src="../imgs/medkit_vacina.png" alt="Vacinação"/><a href="../pages/emDev.html">Histórico de Saúde e Manejo</a></li>
+            <li><img src="../imgs/vegetais-comida.png" alt="Alimentação"/><a href="../pages/emDev.html">Alimentação e Suplementação</a></li>
+            <li><img src="../imgs/rebanho2.png" alt="Movimentação"/><a href="../pages/emDev.html">Movimentação dos Animais</a></li>
+            <li><img src="../imgs/reproducao.png" alt="Reprodução"/><a href="../pages/emDev.html">Reprodução</a></li>
+            <li><img src="../imgs/rastreamento.png" alt="Rastreamento"/><a href="../pages/emDev.html">Rastreamento e Certificação</a></li>
+            <li><img src="../imgs/carne.png" alt="Produção de Carne"/><a href="../pages/emDev.html">Produção de Carne</a></li>
+            <li><img src="../imgs/documentacao.png" alt="Documentação"/><a href="../pages/emDev.html">Documentação Legal e Compliance</a></li>
+            <li><img src="../imgs/seguranca.png" alt="Segurança"/><a href="../pages/emDev.html">Segurança e Controle de Acesso</a></li>
             <li><a href="informacoes.html">Informações Adicionais</a></li>
         </ul>
     </nav>
@@ -164,7 +164,7 @@
             }
 
             try {
-                const response = await fetch(`http://192.168.1.157:8080/api/usuarios/${userId}`, {
+                const response = await fetch(`http://192.168.1.234:8080/api/usuarios/${userId}`, {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${token}`

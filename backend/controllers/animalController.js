@@ -83,7 +83,7 @@ const gerarQRCode = async (req, res) => {
   console.log('Produtor ID encontrado:', produtorId); // Verificando o ID do produtor
 
   // Construir a URL para o painel do animal
-  const urlAnimal = `http://localhost:8080/api/${produtorId}/animais/${animal.identificacao_animal}`;
+  const urlAnimal = `http://192.168.1.234:8080/api/animais/${produtorId}/animais/${animal.identificacao_animal}`;
 
   try {
     // Gerar o QRCode em formato Base64

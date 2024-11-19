@@ -6,3 +6,9 @@ http://localhost:8080/api/auth/login
   "username": "produtor1",
   "password": "senha123"
 }
+
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoicHJvZHV0b3IxIiwiaWF0IjoxNzMxOTgyNDEzLCJleHAiOjE3MzE5ODYwMTN9.KsbYxw9429RY_EjYsUBpMY4ank_V60rlH5NOvzPOnA4
+
+rota para qrcode:
+
+get http://localhost:8080/api/animais/1/animais/OV005/qrcode
